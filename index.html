@@ -3,40 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swapnil Sawant | Power BI Interactive Resume</title>
+    <title>Swapnil Sawant | Interactive Power BI Resume</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
+        :root {
+            --pbi-yellow: #f2c811;
+            --pbi-dark: #252423;
+            --pbi-bar: #333333;
+            --pbi-bg: #eaeaea;
+            --pbi-card: #ffffff;
+            --pbi-accent: #117dbb;
+            --pbi-border: #d1d1d1;
+            --pbi-text: #323130;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--pbi-bg);
+            color: var(--pbi-text);
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
         }
-        .container {
-            width: 95%;
-            max-width: 1300px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            border-radius: 8px;
-            overflow: hidden;
-            background: #fff;
+
+        /* Top Navigation Header */
+        header {
+            background-color: var(--pbi-dark);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        iframe {
-            width: 100%;
-            height: 80vh;
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .brand i {
+            color: var(--pbi-yellow);
+            font-size: 1.4rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background: #3b3a39;
+            color: white;
             border: none;
+            padding: 6px 14px;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #4f4d4a;
+        }
+
+        .btn-primary {
+            background: var(--pbi-accent);
+        }
+
+        .btn-primary:hover {
+            background: #0f6c9e;
+        }
+
+        /* Action/Filter Bar */
+        .action-bar {
+            background-color: var(--pbi-bar);
+            color: #d1d1d1;
+            padding: 6px 20px;
+            font-size: 0.8rem;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            border-bottom: 1px solid var(--pbi-border);
+        }
+
+        .action-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        /* Main Dashboard Grid */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 15px;
+            padding: 15px;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        /* Power BI Sidebar Visuals */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card {
+            background: var(--pbi-card);
+            border: 1px solid var(--pbi-border);
+            border-radius: 4px;
+            padding: 15px;
+            box-shadow: 0 1.6px 3.6px rgba(0,0,0,0.13);
+        }
+
+        .kpi-card {
+            text-align: center;
+            border-left: 4px solid var(--pbi-accent);
+        }
+
+        .kpi-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #605e5c;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .kpi-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--pbi-accent);
+        }
+
+        .kpi-subtext {
+            font-size: 0.75rem;
+            color: #8a8886;
+        }
+
+        .slicer-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .slicer-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            color: var(--pbi-text);
+        }
+
+        .slicer-item input {
+            accent-color: var(--pbi-accent);
+        }
+
+        /* Main Visual Content Area */
+        .main-canvas {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .visual-header {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--pbi-text);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid var(--pbi-accent);
+            padding-bottom: 4px;
+        }
+
+        /* Progress Bar Matrix (Power BI Data Bars) */
+        .skill-matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .skill-bar-container {
+            font-size: 0.85rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
+        }
+
+        .bar-bg {
+            background: #e1dfdd;
+            height: 10px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            background: var(--pbi-accent);
+            height: 100%;
+        }
+
+        /* Experience Timeline Card */
+        .timeline-item {
+            border-left: 2px solid var(--pbi-accent);
+            padding-left: 12px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--pbi-accent);
+            position: absolute;
+            left: -5px;
+            top: 4px;
+            border-radius: 50%;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .job-company {
+            font-size: 0.85rem;
+            color: var(--pbi-accent);
+            font-weight: 600;
+        }
+
+        .job-date {
+            font-size: 0.75rem;
+            color: #605e5c;
+            margin-bottom: 6px;
+        }
+
+        .job-desc {
+            font-size: 0.85rem;
+            color: #323130;
+        }
+
+        .job-desc li {
+            margin-left: 15px;
+            margin-bottom: 4px;
+        }
+
+        /* Footer Tabs */
+        footer {
+            background: var(--pbi-bar);
+            color: white;
+            padding: 4px 15px;
+            display: flex;
+            gap: 2px;
+            font-size: 0.8rem;
+        }
+
+        .tab {
+            background: #252423;
+            padding: 6px 16px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            background: var(--pbi-bg);
+            color: var(--pbi-text);
+            font-weight: 600;
+            border-bottom: 3px solid var(--pbi-yellow);
+        }
+
+        /* Responsive Mobile Layout */
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            .skill-matrix {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- PASTE YOUR POWER BI IFRAME CODE BELOW THIS LINE -->
-        <iframe title="Power BI Resume" src="https://app.powerbi.com/view?r=YOUR_EMBED_URL_HERE" allowFullScreen="true"></iframe>
-        <!-- PASTE YOUR POWER BI IFRAME CODE ABOVE THIS LINE -->
+    <!-- Top Ribbon Header -->
+    <header>
+        <div class="brand">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>Power BI Dashboard | Swapnil Sawant - Resume</span>
+        </div>
+        <div class="header-actions">
+            <a href="mailto:swapnilsawant8575@gmail.com" class="btn"><i class="fa-solid fa-envelope"></i> Contact</a>
+            <a href="https://linkedin.com/in/swapnilsawant8575" target="_blank" class="btn btn-primary"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>
+        </div>
+    </header>
+
+    <!-- Filter / Visual Toolbar -->
+    <div class="action-bar">
+        <div class="action-item"><i class="fa-solid fa-filter"></i> Filters applied: All Data</div>
+        <div class="action-item"><i class="fa-solid fa-rotate-right"></i> Reset visual</div>
+        <div class="action-item"><i class="fa-solid fa-location-dot"></i> Location: Pune, Maharashtra, India</div>
     </div>
+
+    <!-- Main Visual Canvas -->
+    <div class="dashboard">
+        
+        <!-- Left Slicers & KPI Side Panel -->
+        <div class="sidebar">
+            
+            <!-- KPI Visuals -->
+            <div class="card kpi-card">
+                <div class="kpi-title">Total Experience</div>
+                <div class="kpi-value">5+ Yrs</div>
+                <div class="kpi-subtext">IT & Data Operations</div>
+            </div>
+
+            <div class="card kpi-card" style="border-left-color: #107c41;">
+                <div class="kpi-title">Current Role</div>
+                <div class="kpi-value" style="font-size: 1.1rem; color: #107c41;">MIS Executive</div>
+                <div class="kpi-subtext">Wipro</div>
+            </div>
+
+            <!-- Category Slicers -->
+            <div class="card">
+                <div class="slicer-title">
+                    <span>Core Skill Slicer</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="slicer-item"><input type="checkbox" checked disabled> Power Query</div>
+                <div class="slicer-item"><input type="checkbox" checked disabled> PowerPivot</div>
+                <div class="slicer-item"><input type="checkbox" checked disabled> Power Automate</div>
+                <div class="slicer-item"><input type="checkbox" checked disabled> Python (ML/Data)</div>
+                <div class="slicer-item"><input type="checkbox" checked disabled> ServiceNow / ITIL</div>
+            </div>
+
+            <!-- Certifications Visual -->
+            <div class="card">
+                <div class="slicer-title">
+                    <span>Certifications</span>
+                    <i class="fa-solid fa-certificate"></i>
+                </div>
+                <ul style="font-size: 0.8rem; list-style-type: none; line-height: 1.6;">
+                    <li><i class="fa-solid fa-check" style="color: green;"></i> Python for Machine Learning</li>
+                    <li><i class="fa-solid fa-check" style="color: green;"></i> Python 101 for Data Science</li>
+                    <li><i class="fa-solid fa-check" style="color: green;"></i> Technical Foundation Training</li>
+                    <li><i class="fa-solid fa-check" style="color: green;"></i> BPO Milestone 2.0 JL2</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Main Visual Panel -->
+        <div class="main-canvas">
+            
+            <!-- Profile Overview Visual -->
+            <div class="card">
+                <div class="visual-header"><i class="fa-solid fa-user-gear"></i> Executive Profile Matrix</div>
+                <p style="font-size: 0.88rem; line-height: 1.5; color: #444;">
+                    Data-driven <b>Management Information System (MIS) Executive</b> with a Bachelor of Business Administration in Computer Applications from Savitribai Phule Pune University. Proficient in delivering actionable insights through precise reporting, dynamic dashboards, automated workflows, and data visualization. Skilled in partnering with cross-functional stakeholders while adhering to data compliance and security standards.
+                </p>
+            </div>
+
+            <!-- Skill Matrix Data Bars -->
+            <div class="card">
+                <div class="visual-header"><i class="fa-solid fa-chart-bar"></i> Competency Breakdown</div>
+                <div class="skill-matrix">
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Power Query & PowerPivot</span><span>95%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>MIS Reporting & Dashboards</span><span>90%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Microsoft Power Automate</span><span>80%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Python & Data Science</span><span>75%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Timeline Visual -->
+            <div class="card">
+                <div class="visual-header"><i class="fa-solid fa-briefcase"></i> Work Experience Drilldown</div>
+                
+                <div class="timeline-item">
+                    <div class="job-title">Management Information System (MIS) Executive</div>
+                    <div class="job-company">Wipro</div>
+                    <div class="job-date">October 2024 – Present | Pune, India</div>
+                    <ul class="job-desc">
+                        <li>Transformed complex datasets into actionable operational insights by delivering high-quality MIS reports and dashboards.</li>
+                        <li>Partnered with managers and business leaders to identify and fulfill key decision-making information requirements.</li>
+                        <li>Maintained strict compliance with data security standards while maintaining data accuracy and troubleshooting issues promptly.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="job-title">Senior Technical Process Executive</div>
+                    <div class="job-company">Infosys BPM</div>
+                    <div class="job-date">May 2023 – October 2024</div>
+                    <ul class="job-desc">
+                        <li>Service Desk professional adept at resolving client issues via calls, chat, and email using ticketing tools like ServiceNow.</li>
+                        <li>Resolved technical queries related to VPN, Drivers, Office 365, Active Directory, operating systems, and networking in a 24/7 environment.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="job-title">HR Assistant (COVID Resource Center) & Customer Service Associate</div>
+                    <div class="job-company">Amazon Development Centre (India) Private Limited</div>
+                    <div class="job-date">September 2020 – August 2022</div>
+                    <ul class="job-desc">
+                        <li>Centrally managed employee absence claims, policy questions, and case tracking within strict SLA targets.</li>
+                        <li>Handled national and international customer resolutions, ensuring high customer satisfaction standards across channels.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Power BI Page Tabs Footer -->
+    <footer>
+        <div class="tab active"><i class="fa-solid fa-file-lines"></i> Executive Summary</div>
+        <div class="tab"><i class="fa-solid fa-chart-pie"></i> Detailed Skills Matrix</div>
+        <div class="tab"><i class="fa-solid fa-graduation-cap"></i> Education & Background</div>
+    </footer>
 
 </body>
 </html>
