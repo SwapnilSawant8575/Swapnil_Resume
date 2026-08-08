@@ -47,7 +47,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            min-width: 1300px; /* Ensures desktop width is maintained */
+            min-width: 1300px;
             transition: background 0.3s, color 0.3s;
         }
 
@@ -282,6 +282,51 @@
             line-height: 1.4;
         }
 
+        /* Certifications Styling */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .cert-card {
+            background: var(--pbi-card);
+            border: 1px solid var(--pbi-border);
+            padding: 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .cert-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--pbi-text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cert-btn {
+            background: var(--pbi-accent);
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .cert-btn:hover { background: #0f6c9e; }
+
         .sidebar-skills-list {
             display: flex;
             flex-direction: column;
@@ -361,7 +406,7 @@
             color: var(--pbi-text);
             padding: 20px;
             border-radius: 6px;
-            max-width: 550px;
+            max-width: 650px;
             width: 90%;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             position: relative;
@@ -637,14 +682,52 @@
                     </div>
                 </div>
 
+                <!-- VERIFIED CERTIFICATIONS SECTION WITH SPECIFIC FILE NAMES -->
                 <div class="card view-section" id="section-certifications">
                     <div class="visual-header"><i class="fa-solid fa-certificate"></i> Verified Certifications</div>
-                    <ul style="font-size: 0.9rem; list-style-type: none; line-height: 2;">
-                        <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python for Machine Learning</li>
-                        <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python 101 for Data Science</li>
-                        <li><i class="fa-solid fa-check-double" style="color: green;"></i> Technical Foundation Training</li>
-                        <li><i class="fa-solid fa-check-double" style="color: green;"></i> BPO Milestone 2.0 India JL2</li>
-                    </ul>
+                    <div class="cert-grid">
+                        
+                        <!-- CERTIFICATE 1 -->
+                        <div class="cert-card">
+                            <div class="cert-title">
+                                <i class="fa-solid fa-check-double" style="color: green;"></i> Azure OpenAI for Executive - L1
+                            </div>
+                            <button class="cert-btn" onclick="viewCertificate('Azure OpenAI for Executive - L1', 'Azure OpenAI for Executive - L1.jpg')">
+                                <i class="fa-solid fa-eye"></i> View / Download
+                            </button>
+                        </div>
+
+                        <!-- CERTIFICATE 2 -->
+                        <div class="cert-card">
+                            <div class="cert-title">
+                                <i class="fa-solid fa-check-double" style="color: green;"></i> GitHub Copilot - L1
+                            </div>
+                            <button class="cert-btn" onclick="viewCertificate('GitHub Copilot - L1', 'GitHub Copilot - L1.jpg')">
+                                <i class="fa-solid fa-eye"></i> View / Download
+                            </button>
+                        </div>
+
+                        <!-- CERTIFICATE 3 -->
+                        <div class="cert-card">
+                            <div class="cert-title">
+                                <i class="fa-solid fa-check-double" style="color: green;"></i> ITIL 4 Foundation
+                            </div>
+                            <button class="cert-btn" onclick="viewCertificate('ITIL 4 Foundation', 'ITIL 4 Foundation.jpg')">
+                                <i class="fa-solid fa-eye"></i> View / Download
+                            </button>
+                        </div>
+
+                        <!-- CERTIFICATE 4 -->
+                        <div class="cert-card">
+                            <div class="cert-title">
+                                <i class="fa-solid fa-check-double" style="color: green;"></i> Python 101 for Data Science
+                            </div>
+                            <button class="cert-btn" onclick="viewCertificate('Python 101 for Data Science', 'Python 101 for Data Science.pdf')">
+                                <i class="fa-solid fa-eye"></i> View / Download
+                            </button>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
@@ -652,14 +735,16 @@
         </div>
     </div>
 
-    <!-- Drillthrough Modal -->
+    <!-- Drillthrough & Certificate Modal -->
     <div id="projectModal" class="modal-overlay" onclick="closeModal()">
-        <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-card" id="modalCard" onclick="event.stopPropagation()">
             <span class="modal-close" onclick="closeModal()">&times;</span>
-            <h3 id="modalTitle" style="color: var(--pbi-accent); margin-bottom: 12px; font-size: 1.1rem;"></h3>
-            <p style="font-size: 0.85rem; margin-bottom: 8px;"><b>Business Problem:</b> <span id="modalProblem"></span></p>
-            <p style="font-size: 0.85rem; margin-bottom: 8px;"><b>Tech Stack:</b> <span id="modalTech"></span></p>
-            <p style="font-size: 0.85rem;"><b>Business Impact:</b> <span id="modalImpact"></span></p>
+            <div id="modalBody">
+                <h3 id="modalTitle" style="color: var(--pbi-accent); margin-bottom: 12px; font-size: 1.1rem;"></h3>
+                <p style="font-size: 0.85rem; margin-bottom: 8px;"><b>Business Problem:</b> <span id="modalProblem"></span></p>
+                <p style="font-size: 0.85rem; margin-bottom: 8px;"><b>Tech Stack:</b> <span id="modalTech"></span></p>
+                <p style="font-size: 0.85rem;"><b>Business Impact:</b> <span id="modalImpact"></span></p>
+            </div>
         </div>
     </div>
 
@@ -724,11 +809,35 @@
         }
 
         function openModal(title, problem, tech, impact) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalProblem').innerText = problem;
-            document.getElementById('modalTech').innerText = tech;
-            document.getElementById('modalImpact').innerText = impact;
+            document.getElementById('modalBody').innerHTML = `
+                <h3 style="color: var(--pbi-accent); margin-bottom: 12px; font-size: 1.1rem;">${title}</h3>
+                <p style="font-size: 0.85rem; margin-bottom: 8px;"><b>Business Problem:</b> ${problem}</p>
+                <p style="font-size: 0.85rem; margin-bottom: 8px;"><b>Tech Stack:</b> ${tech}</p>
+                <p style="font-size: 0.85rem;"><b>Business Impact:</b> ${impact}</p>
+            `;
             document.getElementById('projectModal').style.display = 'flex';
+        }
+
+        // VIEW & DOWNLOAD CERTIFICATES (Image / PDF Viewer)
+        function viewCertificate(certName, filePath) {
+            const isPdf = filePath.toLowerCase().endsWith('.pdf');
+            
+            if (isPdf) {
+                // Open PDF files in a new tab or initiate direct download
+                window.open(filePath, '_blank');
+            } else {
+                // Render image files directly inside the viewer modal
+                document.getElementById('modalBody').innerHTML = `
+                    <h3 style="color: var(--pbi-accent); margin-bottom: 12px; font-size: 1.1rem;">${certName}</h3>
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <img src="${filePath}" alt="${certName}" style="max-width: 100%; max-height: 400px; border-radius: 4px; border: 1px solid var(--pbi-border);" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x350?text=Certificate+Image+File+Not+Found';">
+                    </div>
+                    <div style="text-align: right;">
+                        <a href="${filePath}" download class="cert-btn"><i class="fa-solid fa-download"></i> Download Image</a>
+                    </div>
+                `;
+                document.getElementById('projectModal').style.display = 'flex';
+            }
         }
 
         function closeModal() {
@@ -742,7 +851,7 @@
                 data: {
                     labels: ['MIS & Analytics', 'Power BI & DAX', 'Power Automate', 'SQL & Databases'],
                     datasets: [{
-                        data: [40, 20, 30, 10],
+                        data: [40, 30, 20, 10],
                         backgroundColor: ['#117dbb', '#f2c811', '#107c41', '#b146c2'],
                         borderWidth: 1
                     }]
