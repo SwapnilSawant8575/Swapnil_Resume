@@ -86,12 +86,8 @@
         /* KPI Cards Grid */
         .kpi-wrapper {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 12px;
-            padding: 15px 15px 0 15px;
-            max-width: 1600px;
-            margin: 0 auto;
-            width: 100%;
         }
 
         .kpi-card {
@@ -306,7 +302,7 @@
     <header>
         <div class="brand">
             <i class="fa-solid fa-chart-column"></i>
-            <span>Power BI Executive Dashboard | Swapnil Sawant</span>
+            <span>Swapnil Sawant | MIS Executive</span>
         </div>
         <div class="contact-bar">
             <a href="tel:+917385552883" class="contact-btn"><i class="fa-solid fa-phone"></i> Call</a>
@@ -316,40 +312,6 @@
             <a href="https://instagram.com/swapnil_sawant_8575" target="_blank" class="contact-btn ig"><i class="fa-brands fa-instagram"></i> Instagram</a>
         </div>
     </header>
-
-    <!-- Top KPI Performance Tiles Grid -->
-    <div class="kpi-wrapper">
-        <div class="kpi-card">
-            <div class="kpi-title">Total Work Exp.</div>
-            <div class="kpi-value">5+ Yrs</div>
-            <div class="kpi-subtext">IT & Operations</div>
-        </div>
-        <div class="kpi-card" style="border-left-color: #0078d4;">
-            <div class="kpi-title">Reports & BI Built</div>
-            <div class="kpi-value" style="color: #0078d4;">120+</div>
-            <div class="kpi-subtext">Dashboards & MIS</div>
-        </div>
-        <div class="kpi-card" style="border-left-color: #107c41;">
-            <div class="kpi-title">Automated Workflows</div>
-            <div class="kpi-value" style="color: #107c41;">35+</div>
-            <div class="kpi-subtext">Power Automate & Teams</div>
-        </div>
-        <div class="kpi-card" style="border-left-color: #b146c2;">
-            <div class="kpi-title">SLA Compliance</div>
-            <div class="kpi-value" style="color: #b146c2;">99.2%</div>
-            <div class="kpi-subtext">Real-Time Thresholds</div>
-        </div>
-        <div class="kpi-card" style="border-left-color: #d13438;">
-            <div class="kpi-title">Pending Escalations</div>
-            <div class="kpi-value" style="color: #d13438;">0 Missed</div>
-            <div class="kpi-subtext">2-Hr Automated Alerts</div>
-        </div>
-        <div class="kpi-card" style="border-left-color: #008272;">
-            <div class="kpi-title">Time Efficiency</div>
-            <div class="kpi-value" style="color: #008272;">~45%</div>
-            <div class="kpi-subtext">Saved via Automation</div>
-        </div>
-    </div>
 
     <!-- Main Canvas & Sidebar -->
     <div class="dashboard">
@@ -412,7 +374,7 @@
                     <div class="project-card">
                         <div class="project-title"><i class="fa-solid fa-heart-pulse"></i> Automated Account Health Dashboard</div>
                         <div class="project-desc">
-                            Built a real-time health visual featuring dynamic conditional formatting (Green = SLA Met, Red = SLA Breach). Tracks CSAT, FCR, SDR, Call/Chat offered vs. abandoned, Inflow vs. Resolved volume, and Current Backlog.
+                            Built a real-time health visual featuring dynamic conditional formatting. Tracks CSAT, FCR, SDR, Call/Chat offered vs. abandoned, Inflow vs. Resolved volume, and Current Backlog %.
                         </div>
                     </div>
 
@@ -437,6 +399,30 @@
                         </div>
                     </div>
 
+                </div>
+
+                <!-- KPI Performance Tiles placed directly below Featured Automation -->
+                <div class="kpi-wrapper" style="margin-top: 15px;">
+                    <div class="kpi-card">
+                        <div class="kpi-title">Total Work Exp.</div>
+                        <div class="kpi-value">5+ Yrs</div>
+                        <div class="kpi-subtext">IT & Operations</div>
+                    </div>
+                    <div class="kpi-card" style="border-left-color: #0078d4;">
+                        <div class="kpi-title">Reports & BI Built</div>
+                        <div class="kpi-value" style="color: #0078d4;">120+</div>
+                        <div class="kpi-subtext">Dashboards & MIS</div>
+                    </div>
+                    <div class="kpi-card" style="border-left-color: #107c41;">
+                        <div class="kpi-title">Automated Workflows</div>
+                        <div class="kpi-value" style="color: #107c41;">35+</div>
+                        <div class="kpi-subtext">Power Automate & Teams</div>
+                    </div>
+                    <div class="kpi-card" style="border-left-color: #008272;">
+                        <div class="kpi-title">Time Efficiency</div>
+                        <div class="kpi-value" style="color: #008272;">~45%</div>
+                        <div class="kpi-subtext">Saved via Automation</div>
+                    </div>
                 </div>
             </div>
 
