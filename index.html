@@ -6,6 +6,8 @@
     <title>Swapnil Sawant | MIS Executive Resume</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for Interactive Power BI Style Visuals -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --pbi-yellow: #f2c811;
@@ -17,6 +19,17 @@
             --pbi-success: #107c41;
             --pbi-border: #d1d1d1;
             --pbi-text: #323130;
+            --pbi-subtext: #605e5c;
+        }
+
+        /* Power BI High-Contrast Dark Theme Mode Variables */
+        body.dark-mode {
+            --pbi-bg: #121212;
+            --pbi-card: #1e1e1e;
+            --pbi-border: #333333;
+            --pbi-text: #f4f4f4;
+            --pbi-subtext: #adadad;
+            --pbi-accent: #37a5e4;
         }
 
         * {
@@ -32,6 +45,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
         }
 
         /* Power BI Header Banner */
@@ -59,11 +73,12 @@
             font-size: 1.4rem;
         }
 
-        /* Contact Action Icons Bar */
+        /* Contact & Tool Action Icons Bar */
         .contact-bar {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .contact-btn {
@@ -77,11 +92,14 @@
             align-items: center;
             gap: 6px;
             transition: all 0.2s;
+            cursor: pointer;
+            border: none;
         }
 
         .contact-btn:hover { background: var(--pbi-accent); color: white; }
         .contact-btn.wa:hover { background: #25D366; }
-        .contact-btn.ig:hover { background: #E1306C; }
+        .contact-btn.pdf-btn { background: var(--pbi-success); }
+        .contact-btn.pdf-btn:hover { background: #0c5e31; }
 
         /* KPI Cards Grid */
         .kpi-wrapper {
@@ -105,7 +123,7 @@
         .kpi-title {
             font-size: 0.72rem;
             text-transform: uppercase;
-            color: #605e5c;
+            color: var(--pbi-subtext);
             font-weight: 700;
             margin-bottom: 4px;
         }
@@ -118,7 +136,7 @@
 
         .kpi-subtext {
             font-size: 0.72rem;
-            color: #8a8886;
+            color: var(--pbi-subtext);
         }
 
         /* Dashboard Main Content Layout */
@@ -146,6 +164,7 @@
             border-radius: 4px;
             padding: 15px;
             box-shadow: 0 1.6px 3.6px rgba(0,0,0,0.1);
+            transition: background 0.3s;
         }
 
         /* Profile Card */
@@ -164,7 +183,19 @@
 
         .profile-name { font-size: 1.05rem; font-weight: 700; color: var(--pbi-text); }
         .profile-role { font-size: 0.78rem; color: var(--pbi-accent); font-weight: 600; margin-bottom: 4px; }
-        .profile-location { font-size: 0.75rem; color: #605e5c; }
+        .profile-location { font-size: 0.75rem; color: var(--pbi-subtext); }
+
+        /* Search Box Filter */
+        .search-box {
+            width: 100%;
+            padding: 7px 10px;
+            font-size: 0.8rem;
+            border: 1px solid var(--pbi-border);
+            border-radius: 3px;
+            background: var(--pbi-card);
+            color: var(--pbi-text);
+            margin-top: 5px;
+        }
 
         /* Radio Slicer Filter Styling */
         .slicer-title {
@@ -174,7 +205,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--pbi-border);
             padding-bottom: 5px;
         }
 
@@ -190,13 +221,17 @@
             margin-bottom: 4px;
         }
 
-        .slicer-option:hover { background: #f0f0f0; }
+        .slicer-option:hover { background: rgba(0,0,0,0.05); }
         .slicer-option input { accent-color: var(--pbi-accent); cursor: pointer; }
 
         .slicer-option.active-slicer {
             background: #e8f4fa;
             font-weight: 600;
             color: var(--pbi-accent);
+        }
+
+        body.dark-mode .slicer-option.active-slicer {
+            background: #233844;
         }
 
         /* Canvas Views */
@@ -236,11 +271,18 @@
         }
 
         .project-card {
-            background: #fafafa;
-            border: 1px solid #e1dfdd;
+            background: var(--pbi-card);
+            border: 1px solid var(--pbi-border);
             border-left: 3px solid var(--pbi-accent);
             padding: 12px;
             border-radius: 3px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         .project-title {
@@ -255,7 +297,7 @@
 
         .project-desc {
             font-size: 0.82rem;
-            color: #444;
+            color: var(--pbi-text);
             line-height: 1.4;
         }
 
@@ -267,8 +309,8 @@
         }
 
         .sidebar-skill-item {
-            background: #f8f9fa;
-            border: 1px solid #e1dfdd;
+            background: rgba(0,0,0,0.02);
+            border: 1px solid var(--pbi-border);
             padding: 6px 10px;
             border-radius: 3px;
             font-size: 0.8rem;
@@ -287,7 +329,7 @@
         .tech-block {
             margin-bottom: 12px;
             padding-bottom: 12px;
-            border-bottom: 1px dashed #e1dfdd;
+            border-bottom: 1px dashed var(--pbi-border);
         }
 
         .tech-block:last-child {
@@ -308,7 +350,7 @@
 
         .tech-desc {
             font-size: 0.85rem;
-            color: #444;
+            color: var(--pbi-text);
             line-height: 1.4;
         }
 
@@ -333,15 +375,56 @@
 
         .job-title { font-weight: 700; font-size: 0.95rem; }
         .job-company { font-size: 0.85rem; color: var(--pbi-accent); font-weight: 600; }
-        .job-date { font-size: 0.75rem; color: #605e5c; margin-bottom: 6px; }
-        .job-desc { font-size: 0.85rem; color: #323130; }
+        .job-date { font-size: 0.75rem; color: var(--pbi-subtext); margin-bottom: 6px; }
+        .job-desc { font-size: 0.85rem; color: var(--pbi-text); }
         .job-desc li { margin-left: 15px; margin-bottom: 6px; }
 
-        /* Mobile & Tablet Adjustments */
+        /* Drilldown Pop-up Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-card {
+            background: var(--pbi-card);
+            color: var(--pbi-text);
+            padding: 20px;
+            border-radius: 6px;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            position: relative;
+            border-left: 5px solid var(--pbi-accent);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--pbi-subtext);
+        }
+
+        /* Power BI Bottom Status Bar */
+        footer {
+            background: var(--pbi-dark);
+            color: #adadad;
+            font-size: 0.75rem;
+            padding: 6px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--pbi-border);
+            margin-top: auto;
+        }
+
         @media (max-width: 900px) {
-            .dashboard { 
-                grid-template-columns: 1fr; 
-            }
+            .dashboard { grid-template-columns: 1fr; }
             .project-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -355,6 +438,10 @@
             <span>Swapnil Sawant | MIS Executive</span>
         </div>
         <div class="contact-bar">
+            <!-- DOWNLOAD RESUME PDF BUTTON WITH RENAMED FILE -->
+            <a href="Profile.pdf" download="Swapnil MIS Resume.pdf" class="contact-btn pdf-btn"><i class="fa-solid fa-file-pdf"></i> Export PDF</a>
+            <!-- THEME SWITCHER TOGGLE BUTTON -->
+            <button class="contact-btn" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i> Theme</button>
             <a href="tel:+917385552883" class="contact-btn"><i class="fa-solid fa-phone"></i> Call</a>
             <a href="mailto:swapnilsawant8575@gmail.com" class="contact-btn"><i class="fa-solid fa-envelope"></i> Email</a>
             <a href="https://linkedin.com/in/swapnilsawant8575" target="_blank" class="contact-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
@@ -374,6 +461,15 @@
                 <div class="profile-name">Swapnil Sawant</div>
                 <div class="profile-role">MIS Executive @ Wipro</div>
                 <div class="profile-location"><i class="fa-solid fa-location-dot"></i> Pune, Maharashtra, India</div>
+            </div>
+
+            <!-- KEYWORD SEARCH FILTER -->
+            <div class="card">
+                <div class="slicer-title">
+                    <span>Keyword Filter</span>
+                    <i class="fa-solid fa-magnifying-glass" style="font-size: 0.75rem;"></i>
+                </div>
+                <input type="text" id="searchInput" class="search-box" placeholder="Search (e.g. Excel, SQL, BI)..." onkeyup="searchKeywords()">
             </div>
 
             <!-- VIEW SLICER (Interactive Single Sheet Navigation) -->
@@ -438,41 +534,49 @@
             <!-- Section 1: Executive Profile Summary -->
             <div class="card view-section" id="section-summary">
                 <div class="visual-header"><i class="fa-solid fa-user-gear"></i> Executive Profile Overview</div>
-                <p style="font-size: 0.88rem; line-height: 1.5; color: #444;">
+                <p style="font-size: 0.88rem; line-height: 1.5; color: var(--pbi-text);">
                     Data-driven <b>Management Information System (MIS) Executive</b> with a Bachelor of Business Administration in Computer Applications from Savitribai Phule Pune University. Specialized in architecting real-time Power BI dashboards, event-driven MS Teams alert systems, and Power Automate workflows that convert complex data into immediate operational insights.
                 </p>
             </div>
 
+            <!-- INTERACTIVE CHART.JS DONUT GRAPH SECTION -->
+            <div class="card view-section">
+                <div class="visual-header"><i class="fa-solid fa-chart-pie"></i> Operational Focus Breakdown (BI Visual)</div>
+                <div style="max-width: 320px; margin: 0 auto; padding: 10px 0;">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+            </div>
+
             <!-- Section 2: Key BI Automation Solutions -->
             <div class="card view-section" id="section-projects">
-                <div class="visual-header"><i class="fa-solid fa-bolt"></i> Featured Automation & Live Dashboards</div>
+                <div class="visual-header"><i class="fa-solid fa-bolt"></i> Featured Automation & Live Dashboards (Click for Drillthrough)</div>
                 <div class="project-grid">
                     
-                    <div class="project-card">
+                    <div class="project-card" onclick="openModal('Automated Account Health Dashboard', 'Needed real-time visibility on account SLA health indicators.', 'Power BI, DAX, Power Query, REST API', 'Dynamic conditional status highlighting CSAT, FCR, SDR & Backlog in real-time.')">
                         <div class="project-title"><i class="fa-solid fa-heart-pulse"></i> Automated Account Health Dashboard</div>
                         <div class="project-desc">
-                            Built a real-time health visual featuring dynamic conditional formatting. Tracks CSAT, FCR, SDR, Call/Chat offered vs. abandoned, Inflow vs. Resolved volume, and Current Backlog %.
+                            Built a real-time health visual featuring dynamic conditional formatting. Tracks CSAT, FCR, SDR, Call/Chat offered vs. abandoned, and Current Backlog %.
                         </div>
                     </div>
 
-                    <div class="project-card" style="border-left-color: #d13438;">
+                    <div class="project-card" style="border-left-color: #d13438;" onclick="openModal('Real-time Escalation & Teams Alerting', 'Manual tracking caused response delays on high-priority escalation tickets.', 'Power Automate, MS Teams Webhooks, ServiceNow', 'Automated live notifications on MS Teams channel group, reducing escalation response time by 60%.')">
                         <div class="project-title" style="color: #d13438;"><i class="fa-solid fa-triangle-exclamation"></i> Real-time Escalation & Teams Alerting</div>
                         <div class="project-desc">
-                            Engineered an automated escalation tracker that updates ticket status live and instantly triggers notifications on MS Teams channel groups via Power Automate workflows when critical tickets are raised.
+                            Engineered an automated escalation tracker that updates ticket status live and instantly triggers notifications on MS Teams channel groups via Power Automate.
                         </div>
                     </div>
 
-                    <div class="project-card" style="border-left-color: #107c41;">
+                    <div class="project-card" style="border-left-color: #107c41;" onclick="openModal('Automated Shift Rota & Capacity Tracker', 'Inability to track real-time analyst headcount across calls, chats, and break schedules.', 'Power BI, Excel Macros, Power Query', 'Provided immediate capacity visibility, optimizing queue coverage across shifts.')">
                         <div class="project-title" style="color: #107c41;"><i class="fa-solid fa-users-gear"></i> Automated Shift Rota & Capacity Tracker</div>
                         <div class="project-desc">
-                            Designed a live headcount dashboard showing available Analysts per shift and real-time activity assignments across Calls, Chats, and Planned Breaks to optimize queue coverage.
+                            Designed a live headcount dashboard showing available Analysts per shift and real-time activity assignments across Calls, Chats, and Planned Breaks.
                         </div>
                     </div>
 
-                    <div class="project-card" style="border-left-color: #b146c2;">
+                    <div class="project-card" style="border-left-color: #b146c2;" onclick="openModal('2-Hour SLA Cadence & Reminders', 'Analysts occasionally missed pending SLA windows due to high ticket volumes.', 'Power Automate, Scheduled Cloud Flows', 'Automated 2-hour reminders scanning active queues, ensuring zero missed critical SLA targets.')">
                         <div class="project-title" style="color: #b146c2;"><i class="fa-solid fa-clock-rotate-left"></i> 2-Hour SLA Cadence & Reminders</div>
                         <div class="project-desc">
-                            Deployed a scheduled 2-hour automated bot/reminder mechanism that scans active tickets and alerts analysts directly regarding pending or unactioned queue items.
+                            Deployed a scheduled 2-hour automated bot/reminder mechanism that scans active tickets and alerts analysts directly regarding pending queue items.
                         </div>
                     </div>
 
@@ -601,8 +705,8 @@
                 <div class="visual-header"><i class="fa-solid fa-graduation-cap"></i> Academic Background</div>
                 <div style="line-height: 1.8; font-size: 0.9rem;">
                     <p><b>Bachelor of Business Administration (BBA) - Computer Applications</b></p>
-                    <p style="color: #605e5c;">Savitribai Phule Pune University</p>
-                    <hr style="margin: 8px 0; border: none; border-top: 1px solid #eee;">
+                    <p style="color: var(--pbi-subtext);">Savitribai Phule Pune University</p>
+                    <hr style="margin: 8px 0; border: none; border-top: 1px solid var(--pbi-border);">
                     <p><b>Higher Secondary Certificate (HSC)</b> - Rayat Shikshan Sanstha's S.M. Joshi College</p>
                     <p><b>Secondary School Certificate (SSC)</b> - Sadhana English Medium School</p>
                 </div>
@@ -623,8 +727,26 @@
 
     </div>
 
-    <!-- Slicer Filter JavaScript Logic -->
+    <!-- PROJECT DRILLTHROUGH POPUP MODAL -->
+    <div id="projectModal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" style="color: var(--pbi-accent); margin-bottom: 12px; font-size: 1.1rem;"></h3>
+            <p style="font-size: 0.85rem; margin-bottom: 8px;"><b>Business Problem:</b> <span id="modalProblem"></span></p>
+            <p style="font-size: 0.85rem; margin-bottom: 8px;"><b>Tech Stack:</b> <span id="modalTech"></span></p>
+            <p style="font-size: 0.85rem;"><b>Business Impact:</b> <span id="modalImpact"></span></p>
+        </div>
+    </div>
+
+    <!-- Power BI Live Status Footer -->
+    <footer>
+        <span><i class="fa-solid fa-circle" style="color: #107c41; font-size: 0.6rem;"></i> Data Status: Live & Up-to-date</span>
+        <span>Power BI Service Edition | Last Refresh: Real-Time</span>
+    </footer>
+
+    <!-- JavaScript Interactivity Code -->
     <script>
+        // Slicer Navigation Filter
         function applySlicerFilter(sectionKey, optionElement) {
             if (optionElement) {
                 document.querySelectorAll('.slicer-option').forEach(opt => opt.classList.remove('active-slicer'));
@@ -657,6 +779,63 @@
                 });
             }
         }
+
+        // Real-time Keyword Search
+        function searchKeywords() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.card, .timeline-item, .project-card');
+
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    card.style.display = "";
+                } else if (input !== "") {
+                    card.style.display = "none";
+                } else {
+                    card.style.display = "";
+                }
+            });
+        }
+
+        // Power BI Theme Switcher (Dark / Light)
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Project Drillthrough Modal Popup Logic
+        function openModal(title, problem, tech, impact) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalProblem').innerText = problem;
+            document.getElementById('modalTech').innerText = tech;
+            document.getElementById('modalImpact').innerText = impact;
+            document.getElementById('projectModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        // Initialize Chart.js Skills Donut Chart
+        window.onload = function() {
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['MIS & Analytics', 'Power BI & DAX', 'Power Automate', 'SQL & Databases'],
+                    datasets: [{
+                        data: [40, 30, 20, 10],
+                        backgroundColor: ['#117dbb', '#f2c811', '#107c41', '#b146c2'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+                    }
+                }
+            });
+        };
     </script>
 </body>
 </html>
