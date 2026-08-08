@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swapnil Sawant | Interactive Power BI Resume</title>
+    <title>Swapnil Sawant | MIS Executive Resume</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -14,6 +14,7 @@
             --pbi-bg: #eaeaea;
             --pbi-card: #ffffff;
             --pbi-accent: #117dbb;
+            --pbi-success: #107c41;
             --pbi-border: #d1d1d1;
             --pbi-text: #323130;
         }
@@ -33,7 +34,7 @@
             min-height: 100vh;
         }
 
-        /* Header */
+        /* Power BI Header Banner */
         header {
             background-color: var(--pbi-dark);
             color: white;
@@ -41,6 +42,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .brand {
@@ -56,31 +59,31 @@
             font-size: 1.4rem;
         }
 
-        .header-actions {
+        /* Contact Action Icons Bar */
+        .contact-bar {
             display: flex;
-            gap: 15px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
-        .btn {
+        .contact-btn {
             background: #3b3a39;
             color: white;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 2px;
-            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 3px;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
             gap: 6px;
-            transition: 0.2s;
+            transition: all 0.2s;
         }
 
-        .btn:hover { background: #4f4d4a; }
-        .btn-primary { background: var(--pbi-accent); }
-        .btn-primary:hover { background: #0f6c9e; }
+        .contact-btn:hover { background: var(--pbi-accent); color: white; }
+        .contact-btn.wa:hover { background: #25D366; }
+        .contact-btn.ig:hover { background: #E1306C; }
 
-        /* Toolbar */
+        /* Power BI Action Bar */
         .action-bar {
             background-color: var(--pbi-bar);
             color: #d1d1d1;
@@ -97,12 +100,53 @@
             align-items: center;
             gap: 6px;
             cursor: pointer;
-            user-select: none;
         }
 
         .action-item:hover { color: #fff; }
 
-        /* Main Dashboard */
+        /* KPI Cards Grid */
+        .kpi-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            padding: 15px 15px 0 15px;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .kpi-card {
+            background: var(--pbi-card);
+            border: 1px solid var(--pbi-border);
+            border-left: 4px solid var(--pbi-accent);
+            border-radius: 4px;
+            padding: 12px 15px;
+            box-shadow: 0 1.6px 3.6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .kpi-card:hover { transform: translateY(-2px); }
+
+        .kpi-title {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: #605e5c;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .kpi-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--pbi-accent);
+        }
+
+        .kpi-subtext {
+            font-size: 0.72rem;
+            color: #8a8886;
+        }
+
+        /* Dashboard Main Content */
         .dashboard {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -114,7 +158,6 @@
             flex-grow: 1;
         }
 
-        /* Sidebar */
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -126,39 +169,28 @@
             border: 1px solid var(--pbi-border);
             border-radius: 4px;
             padding: 15px;
-            box-shadow: 0 1.6px 3.6px rgba(0,0,0,0.13);
-            transition: all 0.2s ease-in-out;
+            box-shadow: 0 1.6px 3.6px rgba(0,0,0,0.1);
         }
 
-        .card:hover {
-            box-shadow: 0 3.2px 7.2px rgba(0,0,0,0.18);
-        }
-
-        .kpi-card {
+        /* Profile Card */
+        .profile-card {
             text-align: center;
-            border-left: 4px solid var(--pbi-accent);
-            cursor: pointer;
         }
 
-        .kpi-title {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: #605e5c;
-            font-weight: 700;
-            margin-bottom: 5px;
+        .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid var(--pbi-accent);
+            object-fit: cover;
+            margin-bottom: 10px;
         }
 
-        .kpi-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--pbi-accent);
-        }
+        .profile-name { font-size: 1.1rem; font-weight: 700; color: var(--pbi-text); }
+        .profile-role { font-size: 0.8rem; color: var(--pbi-accent); font-weight: 600; margin-bottom: 4px; }
+        .profile-location { font-size: 0.75rem; color: #605e5c; }
 
-        .kpi-subtext {
-            font-size: 0.75rem;
-            color: #8a8886;
-        }
-
+        /* Radio Slicer Filter Styling */
         .slicer-title {
             font-size: 0.85rem;
             font-weight: 700;
@@ -170,37 +202,43 @@
             padding-bottom: 5px;
         }
 
-        .slicer-item {
+        .slicer-option {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 3px;
             font-size: 0.85rem;
-            margin-bottom: 8px;
-            color: var(--pbi-text);
             cursor: pointer;
+            transition: background 0.2s;
+            margin-bottom: 4px;
         }
 
-        .slicer-item input {
-            accent-color: var(--pbi-accent);
-            cursor: pointer;
+        .slicer-option:hover { background: #f0f0f0; }
+
+        .slicer-option input { accent-color: var(--pbi-accent); cursor: pointer; }
+
+        .slicer-option.active-slicer {
+            background: #e8f4fa;
+            font-weight: 600;
+            color: var(--pbi-accent);
         }
 
-        /* Main Canvas */
+        /* Canvas Views */
         .main-canvas {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        .tab-page {
-            display: none;
+        .view-section {
+            display: flex;
             flex-direction: column;
             gap: 15px;
+            transition: all 0.3s ease;
         }
 
-        .tab-page.active-page {
-            display: flex;
-        }
+        .hidden { display: none !important; }
 
         .visual-header {
             font-size: 1rem;
@@ -215,41 +253,10 @@
         }
 
         /* Progress Bars */
-        .skill-matrix {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .skill-bar-container {
-            font-size: 0.85rem;
-            padding: 6px;
-            border-radius: 4px;
-            transition: background 0.2s;
-        }
-
-        .skill-bar-container:hover {
-            background: #f0f0f0;
-        }
-
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 3px;
-        }
-
-        .bar-bg {
-            background: #e1dfdd;
-            height: 10px;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            background: var(--pbi-accent);
-            height: 100%;
-            transition: width 0.5s ease-in-out;
-        }
+        .skill-matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .skill-info { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 3px; }
+        .bar-bg { background: #e1dfdd; height: 10px; border-radius: 2px; overflow: hidden; }
+        .bar-fill { background: var(--pbi-accent); height: 100%; }
 
         /* Timeline Items */
         .timeline-item {
@@ -257,7 +264,6 @@
             padding-left: 12px;
             margin-bottom: 15px;
             position: relative;
-            transition: opacity 0.3s ease;
         }
 
         .timeline-item::before {
@@ -277,46 +283,6 @@
         .job-desc { font-size: 0.85rem; color: #323130; }
         .job-desc li { margin-left: 15px; margin-bottom: 4px; }
 
-        /* Interactive Filter Highlight Class */
-        .dimmed {
-            opacity: 0.25;
-        }
-
-        .highlighted {
-            background-color: #e8f4fa !important;
-            border-radius: 4px;
-        }
-
-        /* Footer Tabs */
-        footer {
-            background: var(--pbi-bar);
-            color: white;
-            padding: 4px 15px 0 15px;
-            display: flex;
-            gap: 2px;
-            font-size: 0.8rem;
-            user-select: none;
-        }
-
-        .tab {
-            background: #252423;
-            padding: 8px 16px;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: background 0.2s;
-        }
-
-        .tab:hover { background: #3b3a39; }
-
-        .tab.active {
-            background: var(--pbi-bg);
-            color: var(--pbi-text);
-            font-weight: 600;
-            border-bottom: 3px solid var(--pbi-yellow);
-        }
-
         @media (max-width: 900px) {
             .dashboard { grid-template-columns: 1fr; }
             .skill-matrix { grid-template-columns: 1fr; }
@@ -325,226 +291,233 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header & Interactive Contact Methods -->
     <header>
         <div class="brand">
             <i class="fa-solid fa-chart-column"></i>
-            <span>Power BI Dashboard | Swapnil Sawant - Resume</span>
+            <span>Power BI Executive Dashboard | Swapnil Sawant</span>
         </div>
-        <div class="header-actions">
-            <a href="mailto:swapnilsawant8575@gmail.com" class="btn"><i class="fa-solid fa-envelope"></i> Contact</a>
-            <a href="https://linkedin.com/in/swapnilsawant8575" target="_blank" class="btn btn-primary"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>
+        <div class="contact-bar">
+            <a href="tel:+917385552883" class="contact-btn"><i class="fa-solid fa-phone"></i> Call</a>
+            <a href="mailto:swapnilsawant8575@gmail.com" class="contact-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+            <a href="https://linkedin.com/in/swapnilsawant8575" target="_blank" class="contact-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://wa.me/917385552883" target="_blank" class="contact-btn wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://instagram.com" target="_blank" class="contact-btn ig"><i class="fa-brands fa-instagram"></i> Instagram</a>
         </div>
     </header>
 
     <!-- Toolbar -->
     <div class="action-bar">
-        <div class="action-item" id="filter-status"><i class="fa-solid fa-filter"></i> Filters: None Applied</div>
-        <div class="action-item" onclick="resetFilters()"><i class="fa-solid fa-rotate-right"></i> Reset visual</div>
-        <div class="action-item"><i class="fa-solid fa-location-dot"></i> Location: Pune, Maharashtra, India</div>
+        <div class="action-item" id="filter-status"><i class="fa-solid fa-filter"></i> Active View Filter: All Sections</div>
+        <div class="action-item" onclick="applySlicerFilter('all')"><i class="fa-solid fa-rotate-right"></i> Reset Slicers</div>
     </div>
 
-    <!-- Main Canvas -->
+    <!-- Top KPI Performance Tiles Grid -->
+    <div class="kpi-wrapper">
+        <div class="kpi-card">
+            <div class="kpi-title">Total Work Exp.</div>
+            <div class="kpi-value">5+ Yrs</div>
+            <div class="kpi-subtext">IT & Operations</div>
+        </div>
+        <div class="kpi-card" style="border-left-color: #0078d4;">
+            <div class="kpi-title">Reports Created</div>
+            <div class="kpi-value" style="color: #0078d4;">120+</div>
+            <div class="kpi-subtext">Dashboards & MIS</div>
+        </div>
+        <div class="kpi-card" style="border-left-color: #107c41;">
+            <div class="kpi-title">Automated Flows</div>
+            <div class="kpi-value" style="color: #107c41;">35+</div>
+            <div class="kpi-subtext">Power Automate</div>
+        </div>
+        <div class="kpi-card" style="border-left-color: #b146c2;">
+            <div class="kpi-title">Accuracy Rate</div>
+            <div class="kpi-value" style="color: #b146c2;">99.2%</div>
+            <div class="kpi-subtext">SLA Compliance</div>
+        </div>
+        <div class="kpi-card" style="border-left-color: #d13438;">
+            <div class="kpi-title">Time Saved</div>
+            <div class="kpi-value" style="color: #d13438;">~40%</div>
+            <div class="kpi-subtext">Process Optimization</div>
+        </div>
+        <div class="kpi-card" style="border-left-color: #008272;">
+            <div class="kpi-title">Cost Saved</div>
+            <div class="kpi-value" style="color: #008272;">$15K+</div>
+            <div class="kpi-subtext">Operational Value</div>
+        </div>
+    </div>
+
+    <!-- Main Canvas & Sidebar -->
     <div class="dashboard">
         
-        <!-- Left Sidebar Slicers -->
+        <!-- Sidebar Slicers & Profile -->
         <div class="sidebar">
-            <div class="card kpi-card">
-                <div class="kpi-title">Total Experience</div>
-                <div class="kpi-value">5+ Yrs</div>
-                <div class="kpi-subtext">IT & Data Operations</div>
+            
+            <!-- Profile Photo & Detail Tile -->
+            <div class="card profile-card">
+                <!-- Replace src with your actual photo image link if hosted on GitHub -->
+                <img src="https://via.placeholder.com/150" alt="Swapnil Sawant Profile" class="profile-img">
+                <div class="profile-name">Swapnil Sawant</div>
+                <div class="profile-role">MIS Executive @ Wipro</div>
+                <div class="profile-location"><i class="fa-solid fa-location-dot"></i> Pune, India</div>
             </div>
 
-            <div class="card kpi-card" style="border-left-color: #107c41;">
-                <div class="kpi-title">Current Role</div>
-                <div class="kpi-value" style="font-size: 1.1rem; color: #107c41;">MIS Executive</div>
-                <div class="kpi-subtext">Wipro</div>
-            </div>
-
-            <!-- Interactive Slicer -->
+            <!-- VIEW SLICER (Interactive Single Sheet Navigation) -->
             <div class="card">
                 <div class="slicer-title">
-                    <span>Core Skill Slicer</span>
+                    <span>View Section Slicer</span>
                     <i class="fa-solid fa-filter" style="font-size: 0.75rem;"></i>
                 </div>
-                <label class="slicer-item"><input type="checkbox" value="powerquery" onchange="filterSkills(this)"> Power Query</label>
-                <label class="slicer-item"><input type="checkbox" value="powerpivot" onchange="filterSkills(this)"> PowerPivot</label>
-                <label class="slicer-item"><input type="checkbox" value="automate" onchange="filterSkills(this)"> Power Automate</label>
-                <label class="slicer-item"><input type="checkbox" value="python" onchange="filterSkills(this)"> Python (ML/Data)</label>
-                <label class="slicer-item"><input type="checkbox" value="servicenow" onchange="filterSkills(this)"> ServiceNow / ITIL</label>
+                <label class="slicer-option active-slicer" onclick="applySlicerFilter('all', this)">
+                    <input type="radio" name="view-slicer" checked> Show All Sections
+                </label>
+                <label class="slicer-option" onclick="applySlicerFilter('experience', this)">
+                    <input type="radio" name="view-slicer"> Work Experience
+                </label>
+                <label class="slicer-option" onclick="applySlicerFilter('skills', this)">
+                    <input type="radio" name="view-slicer"> Skills & Competencies
+                </label>
+                <label class="slicer-option" onclick="applySlicerFilter('education', this)">
+                    <input type="radio" name="view-slicer"> Education
+                </label>
+                <label class="slicer-option" onclick="applySlicerFilter('certifications', this)">
+                    <input type="radio" name="view-slicer"> Certifications
+                </label>
             </div>
 
-            <!-- Certifications -->
-            <div class="card">
-                <div class="slicer-title">
-                    <span>Certifications</span>
-                    <i class="fa-solid fa-certificate"></i>
-                </div>
-                <ul style="font-size: 0.8rem; list-style-type: none; line-height: 1.6;">
-                    <li><i class="fa-solid fa-check" style="color: green;"></i> Python for Machine Learning</li>
-                    <li><i class="fa-solid fa-check" style="color: green;"></i> Python 101 for Data Science</li>
-                    <li><i class="fa-solid fa-check" style="color: green;"></i> Technical Foundation Training</li>
-                    <li><i class="fa-solid fa-check" style="color: green;"></i> BPO Milestone 2.0 JL2</li>
-                </ul>
-            </div>
         </div>
 
-        <!-- Main Visual Panel Pages -->
+        <!-- Main Dashboard View Panel -->
         <div class="main-canvas">
             
-            <!-- PAGE 1: Executive Summary -->
-            <div id="page-summary" class="tab-page active-page">
-                <div class="card">
-                    <div class="visual-header"><i class="fa-solid fa-user-gear"></i> Executive Profile Matrix</div>
-                    <p style="font-size: 0.88rem; line-height: 1.5; color: #444;">
-                        Data-driven <b>Management Information System (MIS) Executive</b> with a Bachelor of Business Administration in Computer Applications from Savitribai Phule Pune University. Proficient in delivering actionable insights through precise reporting, dynamic dashboards, automated workflows, and data visualization. Skilled in partnering with cross-functional stakeholders while adhering to data compliance and security standards.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <div class="visual-header"><i class="fa-solid fa-chart-bar"></i> Competency Breakdown</div>
-                    <div class="skill-matrix">
-                        <div class="skill-bar-container" data-tag="powerquery powerpivot">
-                            <div class="skill-info"><span>Power Query & PowerPivot</span><span>95%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
-                        </div>
-                        <div class="skill-bar-container" data-tag="powerquery">
-                            <div class="skill-info"><span>MIS Reporting & Dashboards</span><span>90%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
-                        </div>
-                        <div class="skill-bar-container" data-tag="automate">
-                            <div class="skill-info"><span>Microsoft Power Automate</span><span>80%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
-                        </div>
-                        <div class="skill-bar-container" data-tag="python">
-                            <div class="skill-info"><span>Python & Data Science</span><span>75%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="visual-header"><i class="fa-solid fa-briefcase"></i> Work Experience Drilldown</div>
-                    
-                    <div class="timeline-item" data-tag="powerquery powerpivot automate">
-                        <div class="job-title">Management Information System (MIS) Executive</div>
-                        <div class="job-company">Wipro</div>
-                        <div class="job-date">October 2024 – Present | Pune, India</div>
-                        <ul class="job-desc">
-                            <li>Transformed complex datasets into actionable operational insights by delivering high-quality MIS reports and dashboards.</li>
-                            <li>Partnered with managers and business leaders to identify and fulfill key decision-making information requirements.</li>
-                            <li>Maintained strict compliance with data security standards while maintaining data accuracy and troubleshooting issues promptly.</li>
-                        </ul>
-                    </div>
-
-                    <div class="timeline-item" data-tag="servicenow">
-                        <div class="job-title">Senior Technical Process Executive</div>
-                        <div class="job-company">Infosys BPM</div>
-                        <div class="job-date">May 2023 – October 2024</div>
-                        <ul class="job-desc">
-                            <li>Service Desk professional adept at resolving client issues via calls, chat, and email using ticketing tools like ServiceNow.</li>
-                            <li>Resolved technical queries related to VPN, Drivers, Office 365, Active Directory, operating systems, and networking in a 24/7 environment.</li>
-                        </ul>
-                    </div>
-
-                    <div class="timeline-item" data-tag="servicenow">
-                        <div class="job-title">HR Assistant & Customer Service Associate</div>
-                        <div class="job-company">Amazon Development Centre (India) Private Limited</div>
-                        <div class="job-date">September 2020 – August 2022</div>
-                        <ul class="job-desc">
-                            <li>Centrally managed employee absence claims, policy questions, and case tracking within strict SLA targets.</li>
-                            <li>Handled national and international customer resolutions, ensuring high customer satisfaction standards across channels.</li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- Section 1: Executive Profile Summary -->
+            <div class="card view-section" id="section-summary">
+                <div class="visual-header"><i class="fa-solid fa-user-gear"></i> Executive Profile Overview</div>
+                <p style="font-size: 0.88rem; line-height: 1.5; color: #444;">
+                    Data-driven <b>Management Information System (MIS) Executive</b> with a Bachelor of Business Administration in Computer Applications from Savitribai Phule Pune University. Specialized in building dynamic Power BI dashboards, automated workflows via Power Automate, and high-impact analytics that convert complex data into actionable leadership strategies.
+                </p>
             </div>
 
-            <!-- PAGE 2: Detailed Skills Matrix -->
-            <div id="page-skills" class="tab-page">
-                <div class="card">
-                    <div class="visual-header"><i class="fa-solid fa-layer-group"></i> Technical Competency Breakdown</div>
-                    <ul style="line-height: 1.8; font-size: 0.9rem; padding-left: 20px;">
-                        <li><b>Data Analysis & Visualization:</b> MIS Reporting, Dashboard Design, Power Query, PowerPivot</li>
-                        <li><b>Automation & Workflows:</b> Microsoft Power Automate, Process Efficiency</li>
-                        <li><b>Programming Languages:</b> Python (Data Science & Machine Learning Foundations)</li>
-                        <li><b>IT Service & Tools:</b> ServiceNow, Active Directory, O365, VPN, Hardware Troubleshooting</li>
+            <!-- Section 2: Work Experience -->
+            <div class="card view-section" id="section-experience">
+                <div class="visual-header"><i class="fa-solid fa-briefcase"></i> Work Experience Drilldown</div>
+                
+                <div class="timeline-item">
+                    <div class="job-title">Management Information System (MIS) Executive</div>
+                    <div class="job-company">Wipro</div>
+                    <div class="job-date">October 2024 – Present | Pune, India</div>
+                    <ul class="job-desc">
+                        <li>Delivered high-impact MIS reports and automated Power BI dashboards tailored to internal and external leadership.</li>
+                        <li>Automated manual data aggregation processes using Microsoft Power Query and Power Automate.</li>
+                        <li>Ensured strict data security compliance while maintaining accuracy and resolving operational data queries.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="job-title">Senior Technical Process Executive</div>
+                    <div class="job-company">Infosys BPM</div>
+                    <div class="job-date">May 2023 – October 2024</div>
+                    <ul class="job-desc">
+                        <li>Managed enterprise technical service support in a 24/7 environment using ServiceNow.</li>
+                        <li>Resolved complex technical issues relating to Active Directory, VPN, Office 365, and network infrastructure.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="job-title">HR Assistant & Customer Service Associate</div>
+                    <div class="job-company">Amazon Development Centre (India) Private Limited</div>
+                    <div class="job-date">September 2020 – August 2022</div>
+                    <ul class="job-desc">
+                        <li>Handled end-to-end COVID resource center claims, policy queries, and case tracking within strict SLA benchmarks.</li>
+                        <li>Resolved national and international client issues, maintaining high customer satisfaction metrics.</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- PAGE 3: Education & Background -->
-            <div id="page-education" class="tab-page">
-                <div class="card">
-                    <div class="visual-header"><i class="fa-solid fa-graduation-cap"></i> Academic Qualifications</div>
-                    <div style="line-height: 1.8; font-size: 0.9rem;">
-                        <p><b>Bachelor of Business Administration (BBA) - Computer Applications</b></p>
-                        <p style="color: #605e5c;">Savitribai Phule Pune University</p>
-                        <hr style="margin: 10px 0; border: none; border-top: 1px solid #eee;">
-                        <p><b>HSC (Higher Secondary Certificate)</b></p>
-                        <p style="color: #605e5c;">Rayat Shikshan Sanstha's S.M. Joshi College, Pune</p>
-                        <hr style="margin: 10px 0; border: none; border-top: 1px solid #eee;">
-                        <p><b>SSC (Secondary School Certificate)</b></p>
-                        <p style="color: #605e5c;">Sadhana English Medium School, Pune</p>
+            <!-- Section 3: Skills -->
+            <div class="card view-section" id="section-skills">
+                <div class="visual-header"><i class="fa-solid fa-chart-bar"></i> Skills & Competency Matrix</div>
+                <div class="skill-matrix">
+                    <div>
+                        <div class="skill-info"><span>Power Query & PowerPivot</span><span>95%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="skill-info"><span>MIS Reporting & Dashboards</span><span>90%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="skill-info"><span>Microsoft Power Automate</span><span>80%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="skill-info"><span>Python & Data Science</span><span>75%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Section 4: Education -->
+            <div class="card view-section" id="section-education">
+                <div class="visual-header"><i class="fa-solid fa-graduation-cap"></i> Academic Background</div>
+                <div style="line-height: 1.8; font-size: 0.9rem;">
+                    <p><b>Bachelor of Business Administration (BBA) - Computer Applications</b></p>
+                    <p style="color: #605e5c;">Savitribai Phule Pune University</p>
+                    <hr style="margin: 8px 0; border: none; border-top: 1px solid #eee;">
+                    <p><b>Higher Secondary Certificate (HSC)</b> - Rayat Shikshan Sanstha's S.M. Joshi College</p>
+                    <p><b>Secondary School Certificate (SSC)</b> - Sadhana English Medium School</p>
+                </div>
+            </div>
+
+            <!-- Section 5: Certifications -->
+            <div class="card view-section" id="section-certifications">
+                <div class="visual-header"><i class="fa-solid fa-certificate"></i> Verified Certifications</div>
+                <ul style="font-size: 0.9rem; list-style-type: none; line-height: 2;">
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python for Machine Learning</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python 101 for Data Science</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Technical Foundation Training</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> BPO Milestone 2.0 India JL2</li>
+                </ul>
             </div>
 
         </div>
 
     </div>
 
-    <!-- Interactive Footer Page Tabs -->
-    <footer>
-        <div class="tab active" onclick="switchTab(this, 'page-summary')"><i class="fa-solid fa-file-lines"></i> Executive Summary</div>
-        <div class="tab" onclick="switchTab(this, 'page-skills')"><i class="fa-solid fa-chart-pie"></i> Detailed Skills Matrix</div>
-        <div class="tab" onclick="switchTab(this, 'page-education')"><i class="fa-solid fa-graduation-cap"></i> Education & Background</div>
-    </footer>
-
-    <!-- Interactive Logic Script -->
+    <!-- Slicer Filter JavaScript Logic -->
     <script>
-        // Tab Switcher Logic
-        function switchTab(tabElement, pageId) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active-page'));
-            
-            tabElement.classList.add('active');
-            document.getElementById(pageId).classList.add('active-page');
-        }
-
-        // Skill Slicer Filtering Logic
-        function filterSkills(checkbox) {
-            const checkedBoxes = Array.from(document.querySelectorAll('.slicer-item input:checked')).map(cb => cb.value);
-            const statusText = document.getElementById('filter-status');
-
-            if (checkedBoxes.length === 0) {
-                resetFilters();
-                return;
+        function applySlicerFilter(sectionKey, optionElement) {
+            // Highlight Slicer Item
+            if (optionElement) {
+                document.querySelectorAll('.slicer-option').forEach(opt => opt.classList.remove('active-slicer'));
+                optionElement.classList.add('active-slicer');
+                optionElement.querySelector('input').checked = true;
             }
 
-            statusText.innerHTML = `<i class="fa-solid fa-filter"></i> Filters: ${checkedBoxes.length} Selected`;
+            const sections = {
+                'experience': document.getElementById('section-experience'),
+                'skills': document.getElementById('section-skills'),
+                'education': document.getElementById('section-education'),
+                'certifications': document.getElementById('section-certifications')
+            };
 
-            // Filter Skill Bars and Experience Items
-            document.querySelectorAll('[data-tag]').forEach(item => {
-                const tags = item.getAttribute('data-tag').split(' ');
-                const matches = checkedBoxes.some(val => tags.includes(val));
+            const summarySection = document.getElementById('section-summary');
+            const statusText = document.getElementById('filter-status');
 
-                if (matches) {
-                    item.classList.remove('dimmed');
-                    item.classList.add('highlighted');
-                } else {
-                    item.classList.add('dimmed');
-                    item.classList.remove('highlighted');
-                }
-            });
-        }
-
-        // Reset Filters Logic
-        function resetFilters() {
-            document.querySelectorAll('.slicer-item input').forEach(cb => cb.checked = false);
-            document.querySelectorAll('[data-tag]').forEach(item => {
-                item.classList.remove('dimmed', 'highlighted');
-            });
-            document.getElementById('filter-status').innerHTML = `<i class="fa-solid fa-filter"></i> Filters: None Applied`;
+            if (sectionKey === 'all') {
+                summarySection.classList.remove('hidden');
+                Object.values(sections).forEach(sec => sec.classList.remove('hidden'));
+                statusText.innerHTML = `<i class="fa-solid fa-filter"></i> Active View Filter: All Sections`;
+            } else {
+                summarySection.classList.add('hidden');
+                Object.keys(sections).forEach(key => {
+                    if (key === sectionKey) {
+                        sections[key].classList.remove('hidden');
+                    } else {
+                        sections[key].classList.add('hidden');
+                    }
+                });
+                statusText.innerHTML = `<i class="fa-solid fa-filter"></i> Active View Filter: ${sectionKey.toUpperCase()}`;
+            }
         }
     </script>
 </body>
