@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- FORCE DESKTOP LAYOUT ON ALL MOBILE DEVICES -->
+    <meta name="viewport" content="width=1400, initial-scale=0.3, maximum-scale=3.0, user-scalable=yes">
     <title>Swapnil Sawant | MIS Executive Resume</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -46,52 +47,50 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            min-width: 1300px; /* Ensures desktop width is maintained */
             transition: background 0.3s, color 0.3s;
-            overflow-x: hidden;
         }
 
         /* Power BI Header Banner */
         header {
             background-color: var(--pbi-dark);
             color: white;
-            padding: 10px 16px;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
             gap: 10px;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
 
         .brand i {
             color: var(--pbi-yellow);
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
 
         .contact-bar {
             display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
+            gap: 8px;
             align-items: center;
         }
 
         .contact-btn {
             background: #3b3a39;
             color: white;
-            padding: 6px 10px;
+            padding: 6px 12px;
             border-radius: 3px;
             text-decoration: none;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             transition: all 0.2s;
             cursor: pointer;
             border: none;
@@ -106,8 +105,8 @@
         /* KPI Cards Grid */
         .kpi-wrapper {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
         }
 
         .kpi-card {
@@ -115,7 +114,7 @@
             border: 1px solid var(--pbi-border);
             border-left: 4px solid var(--pbi-accent);
             border-radius: 4px;
-            padding: 10px 12px;
+            padding: 12px 15px;
             box-shadow: 0 1.6px 3.6px rgba(0,0,0,0.1);
             transition: transform 0.2s;
         }
@@ -123,21 +122,21 @@
         .kpi-card:hover { transform: translateY(-2px); }
 
         .kpi-title {
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             text-transform: uppercase;
             color: var(--pbi-subtext);
             font-weight: 700;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
 
         .kpi-value {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--pbi-accent);
         }
 
         .kpi-subtext {
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             color: var(--pbi-subtext);
         }
 
@@ -164,7 +163,7 @@
             background: var(--pbi-card);
             border: 1px solid var(--pbi-border);
             border-radius: 4px;
-            padding: 14px;
+            padding: 15px;
             box-shadow: 0 1.6px 3.6px rgba(0,0,0,0.1);
             transition: background 0.3s;
         }
@@ -172,8 +171,8 @@
         .profile-card { text-align: center; }
 
         .profile-img {
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
             border: 3px solid var(--pbi-accent);
             object-fit: cover;
@@ -187,18 +186,12 @@
         .slicer-title {
             font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--pbi-border);
             padding-bottom: 5px;
-        }
-
-        .slicer-options-container {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
         }
 
         .slicer-option {
@@ -210,7 +203,7 @@
             font-size: 0.82rem;
             cursor: pointer;
             transition: background 0.2s;
-            white-space: nowrap;
+            margin-bottom: 4px;
         }
 
         .slicer-option:hover { background: rgba(0,0,0,0.05); }
@@ -241,10 +234,10 @@
         .hidden { display: none !important; }
 
         .visual-header {
-            font-size: 0.98rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--pbi-text);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -254,7 +247,7 @@
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
         }
 
@@ -274,7 +267,7 @@
         }
 
         .project-title {
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--pbi-accent);
             margin-bottom: 6px;
@@ -310,8 +303,8 @@
         .sidebar-skill-item i { color: var(--pbi-accent); font-size: 0.75rem; }
 
         .tech-block {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
             border-bottom: 1px dashed var(--pbi-border);
         }
 
@@ -319,7 +312,7 @@
 
         .tech-title {
             font-weight: 700;
-            font-size: 0.86rem;
+            font-size: 0.88rem;
             color: var(--pbi-accent);
             margin-bottom: 4px;
             display: flex;
@@ -347,11 +340,11 @@
             border-radius: 50%;
         }
 
-        .job-title { font-weight: 700; font-size: 0.92rem; }
-        .job-company { font-size: 0.83rem; color: var(--pbi-accent); font-weight: 600; }
+        .job-title { font-weight: 700; font-size: 0.95rem; }
+        .job-company { font-size: 0.85rem; color: var(--pbi-accent); font-weight: 600; }
         .job-date { font-size: 0.75rem; color: var(--pbi-subtext); margin-bottom: 6px; }
-        .job-desc { font-size: 0.83rem; color: var(--pbi-text); }
-        .job-desc li { margin-left: 14px; margin-bottom: 6px; line-height: 1.4; }
+        .job-desc { font-size: 0.85rem; color: var(--pbi-text); }
+        .job-desc li { margin-left: 15px; margin-bottom: 6px; }
 
         .modal-overlay {
             position: fixed;
@@ -386,68 +379,13 @@
         footer {
             background: var(--pbi-dark);
             color: #adadad;
-            font-size: 0.72rem;
-            padding: 8px 16px;
+            font-size: 0.75rem;
+            padding: 6px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--pbi-border);
             margin-top: auto;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        /* 📱 ADVANCED MOBILE & TABLET RESPONSIVE FIXES */
-        @media (max-width: 850px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 12px 14px;
-            }
-
-            .contact-bar {
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: 4px;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .dashboard {
-                grid-template-columns: 1fr;
-                padding: 10px;
-                gap: 12px;
-            }
-
-            .sidebar {
-                display: flex;
-                flex-direction: column;
-            }
-
-            /* Horizontal Scrollable Mobile Slicer Tabs */
-            .slicer-options-container {
-                flex-direction: row;
-                overflow-x: auto;
-                padding-bottom: 4px;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .slicer-option {
-                border: 1px solid var(--pbi-border);
-                padding: 6px 12px;
-                flex-shrink: 0;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .kpi-wrapper {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .chart-container {
-                max-width: 260px !important;
-            }
         }
     </style>
 </head>
@@ -469,7 +407,7 @@
         </div>
     </header>
 
-    <!-- Main Canvas Element Captured for PDF -->
+    <!-- Main Canvas Element To Capture for PDF -->
     <div id="pdf-container">
         <div class="dashboard">
             
@@ -489,29 +427,27 @@
                         <span>View Section Slicer</span>
                         <i class="fa-solid fa-filter" style="font-size: 0.75rem;"></i>
                     </div>
-                    <div class="slicer-options-container">
-                        <label class="slicer-option active-slicer" onclick="applySlicerFilter('all', this)">
-                            <input type="radio" name="view-slicer" checked> Show All
-                        </label>
-                        <label class="slicer-option" onclick="applySlicerFilter('projects', this)">
-                            <input type="radio" name="view-slicer"> Automations
-                        </label>
-                        <label class="slicer-option" onclick="applySlicerFilter('experience', this)">
-                            <input type="radio" name="view-slicer"> Experience
-                        </label>
-                        <label class="slicer-option" onclick="applySlicerFilter('skills', this)">
-                            <input type="radio" name="view-slicer"> Core Skills
-                        </label>
-                        <label class="slicer-option" onclick="applySlicerFilter('techskills', this)">
-                            <input type="radio" name="view-slicer"> Technical Skills
-                        </label>
-                        <label class="slicer-option" onclick="applySlicerFilter('education', this)">
-                            <input type="radio" name="view-slicer"> Education
-                        </label>
-                        <label class="slicer-option" onclick="applySlicerFilter('certifications', this)">
-                            <input type="radio" name="view-slicer"> Certifications
-                        </label>
-                    </div>
+                    <label class="slicer-option active-slicer" onclick="applySlicerFilter('all', this)">
+                        <input type="radio" name="view-slicer" checked> Show All Sections
+                    </label>
+                    <label class="slicer-option" onclick="applySlicerFilter('projects', this)">
+                        <input type="radio" name="view-slicer"> Automations
+                    </label>
+                    <label class="slicer-option" onclick="applySlicerFilter('experience', this)">
+                        <input type="radio" name="view-slicer"> Work Experience
+                    </label>
+                    <label class="slicer-option" onclick="applySlicerFilter('skills', this)">
+                        <input type="radio" name="view-slicer"> Core Skills
+                    </label>
+                    <label class="slicer-option" onclick="applySlicerFilter('techskills', this)">
+                        <input type="radio" name="view-slicer"> Technical Skills
+                    </label>
+                    <label class="slicer-option" onclick="applySlicerFilter('education', this)">
+                        <input type="radio" name="view-slicer"> Education
+                    </label>
+                    <label class="slicer-option" onclick="applySlicerFilter('certifications', this)">
+                        <input type="radio" name="view-slicer"> Certifications
+                    </label>
                 </div>
 
                 <!-- Core Skills Block -->
@@ -585,7 +521,7 @@
 
                 <div class="card view-section">
                     <div class="visual-header"><i class="fa-solid fa-chart-pie"></i> Operational Focus Breakdown (BI Visual)</div>
-                    <div class="chart-container" style="max-width: 300px; margin: 0 auto; padding: 5px 0;">
+                    <div style="max-width: 320px; margin: 0 auto; padding: 10px 0;">
                         <canvas id="skillsChart"></canvas>
                     </div>
                 </div>
@@ -692,7 +628,7 @@
 
                 <div class="card view-section" id="section-education">
                     <div class="visual-header"><i class="fa-solid fa-graduation-cap"></i> Academic Background</div>
-                    <div style="line-height: 1.8; font-size: 0.88rem;">
+                    <div style="line-height: 1.8; font-size: 0.9rem;">
                         <p><b>Bachelor of Business Administration (BBA) - Computer Applications</b></p>
                         <p style="color: var(--pbi-subtext);">Savitribai Phule Pune University</p>
                         <hr style="margin: 8px 0; border: none; border-top: 1px solid var(--pbi-border);">
@@ -703,7 +639,7 @@
 
                 <div class="card view-section" id="section-certifications">
                     <div class="visual-header"><i class="fa-solid fa-certificate"></i> Verified Certifications</div>
-                    <ul style="font-size: 0.88rem; list-style-type: none; line-height: 2;">
+                    <ul style="font-size: 0.9rem; list-style-type: none; line-height: 2;">
                         <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python for Machine Learning</li>
                         <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python 101 for Data Science</li>
                         <li><i class="fa-solid fa-check-double" style="color: green;"></i> Technical Foundation Training</li>
@@ -720,16 +656,16 @@
     <div id="projectModal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-card" onclick="event.stopPropagation()">
             <span class="modal-close" onclick="closeModal()">&times;</span>
-            <h3 id="modalTitle" style="color: var(--pbi-accent); margin-bottom: 12px; font-size: 1.05rem;"></h3>
-            <p style="font-size: 0.83rem; margin-bottom: 8px;"><b>Business Problem:</b> <span id="modalProblem"></span></p>
-            <p style="font-size: 0.83rem; margin-bottom: 8px;"><b>Tech Stack:</b> <span id="modalTech"></span></p>
-            <p style="font-size: 0.83rem;"><b>Business Impact:</b> <span id="modalImpact"></span></p>
+            <h3 id="modalTitle" style="color: var(--pbi-accent); margin-bottom: 12px; font-size: 1.1rem;"></h3>
+            <p style="font-size: 0.85rem; margin-bottom: 8px;"><b>Business Problem:</b> <span id="modalProblem"></span></p>
+            <p style="font-size: 0.85rem; margin-bottom: 8px;"><b>Tech Stack:</b> <span id="modalTech"></span></p>
+            <p style="font-size: 0.85rem;"><b>Business Impact:</b> <span id="modalImpact"></span></p>
         </div>
     </div>
 
     <!-- Power BI Footer -->
     <footer>
-        <span><i class="fa-solid fa-circle" style="color: #107c41; font-size: 0.55rem;"></i> Data Status: Live & Up-to-date</span>
+        <span><i class="fa-solid fa-circle" style="color: #107c41; font-size: 0.6rem;"></i> Data Status: Live & Up-to-date</span>
         <span>Power BI Service Edition | Real-Time</span>
     </footer>
 
@@ -740,7 +676,7 @@
 
             const element = document.getElementById('pdf-container');
             const opt = {
-                margin:       [0.2, 0.2, 0.2, 0.2],
+                margin:       [0.3, 0.3, 0.3, 0.3],
                 filename:     'Swapnil MIS Resume.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
                 html2canvas:  { scale: 2, useCORS: true },
@@ -806,16 +742,15 @@
                 data: {
                     labels: ['MIS & Analytics', 'Power BI & DAX', 'Power Automate', 'SQL & Databases'],
                     datasets: [{
-                        data: [40, 30, 20, 10],
+                        data: [40, 20, 30, 10],
                         backgroundColor: ['#117dbb', '#f2c811', '#107c41', '#b146c2'],
                         borderWidth: 1
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
                     plugins: {
-                        legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } }
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
                     }
                 }
             });
