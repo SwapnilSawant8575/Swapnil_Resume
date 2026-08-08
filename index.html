@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swapnil Sawant | MIS Executive Resume</title>
+    <title>Swapnil Sawant | Power BI Executive Dashboard Resume</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -190,7 +190,6 @@
         }
 
         .slicer-option:hover { background: #f0f0f0; }
-
         .slicer-option input { accent-color: var(--pbi-accent); cursor: pointer; }
 
         .slicer-option.active-slicer {
@@ -258,11 +257,58 @@
             line-height: 1.4;
         }
 
-        /* Progress Bars */
-        .skill-matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .skill-info { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 3px; }
-        .bar-bg { background: #e1dfdd; height: 10px; border-radius: 2px; overflow: hidden; }
-        .bar-fill { background: var(--pbi-accent); height: 100%; }
+        /* Skills Badge Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 10px;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            border: 1px solid #e1dfdd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--pbi-text);
+        }
+
+        .skill-item i {
+            color: var(--pbi-accent);
+            font-size: 0.8rem;
+        }
+
+        /* Technical Skill Block */
+        .tech-block {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #e1dfdd;
+        }
+
+        .tech-block:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .tech-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--pbi-accent);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tech-desc {
+            font-size: 0.85rem;
+            color: #444;
+            line-height: 1.4;
+        }
 
         /* Timeline Items */
         .timeline-item {
@@ -291,8 +337,8 @@
 
         @media (max-width: 900px) {
             .dashboard { grid-template-columns: 1fr; }
-            .skill-matrix { grid-template-columns: 1fr; }
             .project-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -302,7 +348,7 @@
     <header>
         <div class="brand">
             <i class="fa-solid fa-chart-column"></i>
-            <span>Swapnil Sawant | MIS Executive</span>
+            <span>Power BI Executive Dashboard | Swapnil Sawant</span>
         </div>
         <div class="contact-bar">
             <a href="tel:+917385552883" class="contact-btn"><i class="fa-solid fa-phone"></i> Call</a>
@@ -321,7 +367,7 @@
             
             <!-- Profile Photo & Detail Tile -->
             <div class="card profile-card">
-                <img src="Swapnil_Photo.jpg" alt="Swapnil Sawant Profile" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
+                <img src="Pratik Photo.jpeg" alt="Swapnil Sawant Profile" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
                 <div class="profile-name">Swapnil Sawant</div>
                 <div class="profile-role">MIS Executive @ Wipro</div>
                 <div class="profile-location"><i class="fa-solid fa-location-dot"></i> Pune, India</div>
@@ -337,13 +383,16 @@
                     <input type="radio" name="view-slicer" checked> Show All Sections
                 </label>
                 <label class="slicer-option" onclick="applySlicerFilter('projects', this)">
-                    <input type="radio" name="view-slicer"> Automations
+                    <input type="radio" name="view-slicer"> Key BI Automations
                 </label>
                 <label class="slicer-option" onclick="applySlicerFilter('experience', this)">
                     <input type="radio" name="view-slicer"> Work Experience
                 </label>
                 <label class="slicer-option" onclick="applySlicerFilter('skills', this)">
-                    <input type="radio" name="view-slicer"> Skills & Competencies
+                    <input type="radio" name="view-slicer"> Core Skills
+                </label>
+                <label class="slicer-option" onclick="applySlicerFilter('techskills', this)">
+                    <input type="radio" name="view-slicer"> Technical Skills
                 </label>
                 <label class="slicer-option" onclick="applySlicerFilter('education', this)">
                     <input type="radio" name="view-slicer"> Education
@@ -362,7 +411,7 @@
             <div class="card view-section" id="section-summary">
                 <div class="visual-header"><i class="fa-solid fa-user-gear"></i> Executive Profile Overview</div>
                 <p style="font-size: 0.88rem; line-height: 1.5; color: #444;">
-                    Data-driven <b>Management Information System (MIS) Executive</b> with a Bachelor of Business Administration in Computer Applications from Savitribai Phule Pune University. Specialized in architecting real-time Power BI dashboards, event-driven MS Teams alert systems, and Power Automate workflows that convert complex data into immediate operational insights.
+                    Data-driven <b>Management Information System (MIS) Executive</b> with a Bachelor of Business Administration in Computer Applications from Savitribai Phule Pune University[cite: 1]. Specialized in architecting real-time Power BI dashboards, event-driven MS Teams alert systems, and Power Automate workflows that convert complex data into immediate operational insights[cite: 1].
                 </p>
             </div>
 
@@ -374,7 +423,7 @@
                     <div class="project-card">
                         <div class="project-title"><i class="fa-solid fa-heart-pulse"></i> Automated Account Health Dashboard</div>
                         <div class="project-desc">
-                            Built a real-time health visual featuring dynamic conditional formatting. Tracks CSAT, FCR, SDR, Call/Chat offered vs. abandoned, Inflow vs. Resolved volume, and Current Backlog %.
+                            Built a real-time health visual featuring dynamic conditional formatting (Green = SLA Met, Red = SLA Breach). Tracks CSAT, FCR, SDR, Call/Chat offered vs. abandoned, Inflow vs. Resolved volume, and Current Backlog.
                         </div>
                     </div>
 
@@ -433,79 +482,127 @@
                 <div class="timeline-item">
                     <div class="job-title">Management Information System (MIS) Executive</div>
                     <div class="job-company">Wipro</div>
-                    <div class="job-date">October 2024 – Present | Pune, India</div>
+                    <div class="job-date">October 2024 – Present | Pune, India[cite: 1]</div>
                     <ul class="job-desc">
-                        <li>Transformed raw operational data into high-impact MIS reports, dynamic Power BI dashboards, and live CSAT scoring engines.</li>
-                        <li>Integrated Power Automate workflows to trigger immediate MS Teams alerts for high-priority escalated tickets.</li>
-                        <li>Engineered an Automated Account Health Dashboard with dynamic green/red status indicators covering FCR, SDR, Abandonment, and Backlog metrics.</li>
-                        <li>Created automated 2-hour pending ticket reminders and live Shift Rota dashboards for real-time headcount planning.</li>
+                        <li>Prepare and circulate Daily, Weekly, and Monthly MIS reports within defined deadlines[cite: 1].</li>
+                        <li>Collect, consolidate, validate, and analyze data from multiple sources to ensure complete accuracy and consistency[cite: 1].</li>
+                        <li>Develop and maintain Excel-based MIS reports, trackers, dashboards, and analytical reports[cite: 1].</li>
+                        <li>Utilize advanced Excel functions, Pivot Tables, Power Query, and VBA/Macros to automate and streamline reporting processes[cite: 1].</li>
+                        <li>Create and maintain Power BI dashboards to provide management with clear visibility into business performance and key KPIs[cite: 1].</li>
+                        <li>Perform data cleaning, transformation, merging, and validation using Power Query[cite: 1].</li>
+                        <li>Analyze trends, variances, and performance indicators, highlighting important observations to management[cite: 1].</li>
+                        <li>Maintain regular reporting databases and ensure timely updating of MIS trackers[cite: 1].</li>
+                        <li>Coordinate across teams to collect required data and resolve discrepancies promptly[cite: 1].</li>
+                        <li>Prepare ad-hoc reports and custom analysis requested by Team Leaders, Assistant Managers, or management[cite: 1].</li>
+                        <li>Identify continuous opportunities to improve reporting accuracy, operational efficiency, and automation[cite: 1].</li>
+                        <li>Ensure all assigned reports are delivered accurately, securely, and within required timelines[cite: 1].</li>
                     </ul>
                 </div>
 
                 <div class="timeline-item">
                     <div class="job-title">Senior Technical Process Executive</div>
                     <div class="job-company">Infosys BPM</div>
-                    <div class="job-date">May 2023 – October 2024</div>
+                    <div class="job-date">May 2023 – October 2024[cite: 1]</div>
                     <ul class="job-desc">
-                        <li>Managed enterprise technical service support in a 24/7 environment using ServiceNow.</li>
-                        <li>Resolved technical queries relating to Active Directory, VPN, Office 365, and network infrastructure.</li>
+                        <li>Managed enterprise technical service support in a 24/7 environment using ServiceNow[cite: 1].</li>
+                        <li>Resolved technical queries relating to Active Directory, VPN, Office 365, and network infrastructure[cite: 1].</li>
                     </ul>
                 </div>
 
                 <div class="timeline-item">
                     <div class="job-title">HR Assistant & Customer Service Associate</div>
                     <div class="job-company">Amazon Development Centre (India) Private Limited</div>
-                    <div class="job-date">September 2020 – August 2022</div>
+                    <div class="job-date">September 2020 – August 2022[cite: 1]</div>
                     <ul class="job-desc">
-                        <li>Handled end-to-end COVID resource center claims, policy queries, and case tracking within strict SLA benchmarks.</li>
-                        <li>Resolved national and international client issues, maintaining high customer satisfaction metrics.</li>
+                        <li>Handled end-to-end COVID resource center claims, policy queries, and case tracking within strict SLA benchmarks[cite: 1].</li>
+                        <li>Resolved national and international client issues, maintaining high customer satisfaction metrics[cite: 1].</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Section 4: Skills -->
+            <!-- Section 4: Core Skills -->
             <div class="card view-section" id="section-skills">
-                <div class="visual-header"><i class="fa-solid fa-chart-bar"></i> Skills & Competency Matrix</div>
-                <div class="skill-matrix">
-                    <div>
-                        <div class="skill-info"><span>Power BI & Real-time Dashboards</span><span>95%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                <div class="visual-header"><i class="fa-solid fa-list-check"></i> Core Skills</div>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> MIS Reporting & Data Analysis</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Advanced Microsoft Excel</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Excel Formulas & Functions</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Pivot Tables & Pivot Charts</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Macros / VBA</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Power Query</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Power BI & Dashboard Development</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Data Cleaning & Validation</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Data Consolidation & Reconciliation</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Daily / Weekly / Monthly Reporting</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> KPI & Performance Reporting</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Ad-hoc Reports & Analysis</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> SQL & Relational Databases</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Data Visualization</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Report Automation</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Management Reporting</div>
+                </div>
+            </div>
+
+            <!-- Section 5: Technical Skills -->
+            <div class="card view-section" id="section-techskills">
+                <div class="visual-header"><i class="fa-solid fa-laptop-code"></i> Technical Skills Breakdown</div>
+                
+                <div class="tech-block">
+                    <div class="tech-title"><i class="fa-solid fa-file-excel"></i> MS Excel</div>
+                    <div class="tech-desc">
+                        Advanced Excel, IF, SUMIFS, COUNTIFS, VLOOKUP, XLOOKUP, INDEX-MATCH, Pivot Tables, Pivot Charts, Conditional Formatting, Data Validation, Macros/VBA.
                     </div>
-                    <div>
-                        <div class="skill-info"><span>Power Automate & MS Teams Integration</span><span>92%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div>
+                </div>
+
+                <div class="tech-block">
+                    <div class="tech-title"><i class="fa-solid fa-filter"></i> Power Query</div>
+                    <div class="tech-desc">
+                        Data extraction, data cleaning, transformation, merging, appending, and automated data preparation.
                     </div>
-                    <div>
-                        <div class="skill-info"><span>Power Query & PowerPivot (DAX)</span><span>90%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
+                </div>
+
+                <div class="tech-block">
+                    <div class="tech-title"><i class="fa-solid fa-chart-pie"></i> Power BI</div>
+                    <div class="tech-desc">
+                        Data visualization, dashboard creation, data modelling, report development, KPI dashboards.
                     </div>
-                    <div>
-                        <div class="skill-info"><span>SLA Management (CSAT, FCR, SDR)</span><span>88%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 88%;"></div></div>
+                </div>
+
+                <div class="tech-block">
+                    <div class="tech-title"><i class="fa-solid fa-database"></i> SQL</div>
+                    <div class="tech-desc">
+                        Basic/Intermediate SQL, data extraction, filtering, joins, aggregation, and database concepts.
+                    </div>
+                </div>
+
+                <div class="tech-block">
+                    <div class="tech-title"><i class="fa-solid fa-server"></i> Databases</div>
+                    <div class="tech-desc">
+                        Understanding of relational database concepts and data management.
                     </div>
                 </div>
             </div>
 
-            <!-- Section 5: Education -->
+            <!-- Section 6: Education -->
             <div class="card view-section" id="section-education">
                 <div class="visual-header"><i class="fa-solid fa-graduation-cap"></i> Academic Background</div>
                 <div style="line-height: 1.8; font-size: 0.9rem;">
                     <p><b>Bachelor of Business Administration (BBA) - Computer Applications</b></p>
-                    <p style="color: #605e5c;">Savitribai Phule Pune University</p>
+                    <p style="color: #605e5c;">Savitribai Phule Pune University[cite: 1]</p>
                     <hr style="margin: 8px 0; border: none; border-top: 1px solid #eee;">
-                    <p><b>Higher Secondary Certificate (HSC)</b> - Rayat Shikshan Sanstha's S.M. Joshi College</p>
-                    <p><b>Secondary School Certificate (SSC)</b> - Sadhana English Medium School</p>
+                    <p><b>Higher Secondary Certificate (HSC)</b> - Rayat Shikshan Sanstha's S.M. Joshi College[cite: 1]</p>
+                    <p><b>Secondary School Certificate (SSC)</b> - Sadhana English Medium School[cite: 1]</p>
                 </div>
             </div>
 
-            <!-- Section 6: Certifications -->
+            <!-- Section 7: Certifications -->
             <div class="card view-section" id="section-certifications">
                 <div class="visual-header"><i class="fa-solid fa-certificate"></i> Verified Certifications</div>
                 <ul style="font-size: 0.9rem; list-style-type: none; line-height: 2;">
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python for Machine Learning</li>
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python 101 for Data Science</li>
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Technical Foundation Training</li>
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> BPO Milestone 2.0 India JL2</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python for Machine Learning[cite: 1]</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python 101 for Data Science[cite: 1]</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Technical Foundation Training[cite: 1]</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> BPO Milestone 2.0 India JL2[cite: 1]</li>
                 </ul>
             </div>
 
@@ -526,6 +623,7 @@
                 'projects': document.getElementById('section-projects'),
                 'experience': document.getElementById('section-experience'),
                 'skills': document.getElementById('section-skills'),
+                'techskills': document.getElementById('section-techskills'),
                 'education': document.getElementById('section-education'),
                 'certifications': document.getElementById('section-certifications')
             };
