@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swapnil Sawant | Power BI Executive Dashboard Resume</title>
+    <title>Swapnil Sawant | MIS Executive Resume</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -82,27 +82,6 @@
         .contact-btn:hover { background: var(--pbi-accent); color: white; }
         .contact-btn.wa:hover { background: #25D366; }
         .contact-btn.ig:hover { background: #E1306C; }
-
-        /* Power BI Action Bar */
-        .action-bar {
-            background-color: var(--pbi-bar);
-            color: #d1d1d1;
-            padding: 6px 20px;
-            font-size: 0.8rem;
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            border-bottom: 1px solid var(--pbi-border);
-        }
-
-        .action-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .action-item:hover { color: #fff; }
 
         /* KPI Cards Grid */
         .kpi-wrapper {
@@ -252,6 +231,37 @@
             padding-bottom: 4px;
         }
 
+        /* Project Cards Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .project-card {
+            background: #fafafa;
+            border: 1px solid #e1dfdd;
+            border-left: 3px solid var(--pbi-accent);
+            padding: 12px;
+            border-radius: 3px;
+        }
+
+        .project-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--pbi-accent);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .project-desc {
+            font-size: 0.82rem;
+            color: #444;
+            line-height: 1.4;
+        }
+
         /* Progress Bars */
         .skill-matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .skill-info { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 3px; }
@@ -281,11 +291,12 @@
         .job-company { font-size: 0.85rem; color: var(--pbi-accent); font-weight: 600; }
         .job-date { font-size: 0.75rem; color: #605e5c; margin-bottom: 6px; }
         .job-desc { font-size: 0.85rem; color: #323130; }
-        .job-desc li { margin-left: 15px; margin-bottom: 4px; }
+        .job-desc li { margin-left: 15px; margin-bottom: 6px; }
 
         @media (max-width: 900px) {
             .dashboard { grid-template-columns: 1fr; }
             .skill-matrix { grid-template-columns: 1fr; }
+            .project-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -306,12 +317,6 @@
         </div>
     </header>
 
-    <!-- Toolbar -->
-    <div class="action-bar">
-        <div class="action-item" id="filter-status"><i class="fa-solid fa-filter"></i> Active View Filter: All Sections</div>
-        <div class="action-item" onclick="applySlicerFilter('all')"><i class="fa-solid fa-rotate-right"></i> Reset Slicers</div>
-    </div>
-
     <!-- Top KPI Performance Tiles Grid -->
     <div class="kpi-wrapper">
         <div class="kpi-card">
@@ -320,29 +325,29 @@
             <div class="kpi-subtext">IT & Operations</div>
         </div>
         <div class="kpi-card" style="border-left-color: #0078d4;">
-            <div class="kpi-title">Reports Created</div>
+            <div class="kpi-title">Reports & BI Built</div>
             <div class="kpi-value" style="color: #0078d4;">120+</div>
             <div class="kpi-subtext">Dashboards & MIS</div>
         </div>
         <div class="kpi-card" style="border-left-color: #107c41;">
-            <div class="kpi-title">Automated Flows</div>
+            <div class="kpi-title">Automated Workflows</div>
             <div class="kpi-value" style="color: #107c41;">35+</div>
-            <div class="kpi-subtext">Power Automate</div>
+            <div class="kpi-subtext">Power Automate & Teams</div>
         </div>
         <div class="kpi-card" style="border-left-color: #b146c2;">
-            <div class="kpi-title">Accuracy Rate</div>
+            <div class="kpi-title">SLA Compliance</div>
             <div class="kpi-value" style="color: #b146c2;">99.2%</div>
-            <div class="kpi-subtext">SLA Compliance</div>
+            <div class="kpi-subtext">Real-Time Thresholds</div>
         </div>
         <div class="kpi-card" style="border-left-color: #d13438;">
-            <div class="kpi-title">Time Saved</div>
-            <div class="kpi-value" style="color: #d13438;">~40%</div>
-            <div class="kpi-subtext">Process Optimization</div>
+            <div class="kpi-title">Pending Escalations</div>
+            <div class="kpi-value" style="color: #d13438;">0 Missed</div>
+            <div class="kpi-subtext">2-Hr Automated Alerts</div>
         </div>
         <div class="kpi-card" style="border-left-color: #008272;">
-            <div class="kpi-title">Cost Saved</div>
-            <div class="kpi-value" style="color: #008272;">$15K+</div>
-            <div class="kpi-subtext">Operational Value</div>
+            <div class="kpi-title">Time Efficiency</div>
+            <div class="kpi-value" style="color: #008272;">~45%</div>
+            <div class="kpi-subtext">Saved via Automation</div>
         </div>
     </div>
 
@@ -354,8 +359,7 @@
             
             <!-- Profile Photo & Detail Tile -->
             <div class="card profile-card">
-                <!-- Replace src with your actual photo image link if hosted on GitHub -->
-                <img src="Pratik Photo.jpeg" alt="Swapnil Sawant Profile" class="profile-img">
+                <img src="Swapnil_Photo.jpg" alt="Swapnil Sawant Profile" class="profile-img" onerror="this.src='https://via.placeholder.com/150'">
                 <div class="profile-name">Swapnil Sawant</div>
                 <div class="profile-role">MIS Executive @ Wipro</div>
                 <div class="profile-location"><i class="fa-solid fa-location-dot"></i> Pune, India</div>
@@ -369,6 +373,9 @@
                 </div>
                 <label class="slicer-option active-slicer" onclick="applySlicerFilter('all', this)">
                     <input type="radio" name="view-slicer" checked> Show All Sections
+                </label>
+                <label class="slicer-option" onclick="applySlicerFilter('projects', this)">
+                    <input type="radio" name="view-slicer"> Key BI Automations
                 </label>
                 <label class="slicer-option" onclick="applySlicerFilter('experience', this)">
                     <input type="radio" name="view-slicer"> Work Experience
@@ -393,89 +400,126 @@
             <div class="card view-section" id="section-summary">
                 <div class="visual-header"><i class="fa-solid fa-user-gear"></i> Executive Profile Overview</div>
                 <p style="font-size: 0.88rem; line-height: 1.5; color: #444;">
-                    Data-driven <b>Management Information System (MIS) Executive</b> with a Bachelor of Business Administration in Computer Applications from Savitribai Phule Pune University. Specialized in building dynamic Power BI dashboards, automated workflows via Power Automate, and high-impact analytics that convert complex data into actionable leadership strategies.
+                    Data-driven <b>Management Information System (MIS) Executive</b> with a Bachelor of Business Administration in Computer Applications from Savitribai Phule Pune University[cite: 1]. Specialized in architecting real-time Power BI dashboards, event-driven MS Teams alert systems, and Power Automate workflows that convert complex data into immediate operational insights[cite: 1].
                 </p>
             </div>
 
-            <!-- Section 2: Work Experience -->
+            <!-- Section 2: Key BI Automation Solutions -->
+            <div class="card view-section" id="section-projects">
+                <div class="visual-header"><i class="fa-solid fa-bolt"></i> Featured Automation & Live Dashboards</div>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-title"><i class="fa-solid fa-heart-pulse"></i> Automated Account Health Dashboard</div>
+                        <div class="project-desc">
+                            Built a real-time health visual featuring dynamic conditional formatting (Green = SLA Met, Red = SLA Breach). Tracks CSAT, FCR, SDR, Call/Chat offered vs. abandoned, Inflow vs. Resolved volume, and Current Backlog.
+                        </div>
+                    </div>
+
+                    <div class="project-card" style="border-left-color: #d13438;">
+                        <div class="project-title" style="color: #d13438;"><i class="fa-solid fa-triangle-exclamation"></i> Real-time Escalation & Teams Alerting</div>
+                        <div class="project-desc">
+                            Engineered an automated escalation tracker that updates ticket status live and instantly triggers notifications on MS Teams channel groups via Power Automate workflows when critical tickets are raised.
+                        </div>
+                    </div>
+
+                    <div class="project-card" style="border-left-color: #107c41;">
+                        <div class="project-title" style="color: #107c41;"><i class="fa-solid fa-users-gear"></i> Automated Shift Rota & Capacity Tracker</div>
+                        <div class="project-desc">
+                            Designed a live headcount dashboard showing available Analysts per shift and real-time activity assignments across Calls, Chats, and Planned Breaks to optimize queue coverage.
+                        </div>
+                    </div>
+
+                    <div class="project-card" style="border-left-color: #b146c2;">
+                        <div class="project-title" style="color: #b146c2;"><i class="fa-solid fa-clock-rotate-left"></i> 2-Hour SLA Cadence & Reminders</div>
+                        <div class="project-desc">
+                            Deployed a scheduled 2-hour automated bot/reminder mechanism that scans active tickets and alerts analysts directly regarding pending or unactioned queue items.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Section 3: Work Experience -->
             <div class="card view-section" id="section-experience">
                 <div class="visual-header"><i class="fa-solid fa-briefcase"></i> Work Experience Drilldown</div>
                 
                 <div class="timeline-item">
                     <div class="job-title">Management Information System (MIS) Executive</div>
                     <div class="job-company">Wipro</div>
-                    <div class="job-date">October 2024 – Present | Pune, India</div>
+                    <div class="job-date">October 2024 – Present | Pune, India[cite: 1]</div>
                     <ul class="job-desc">
-                        <li>Delivered high-impact MIS reports and automated Power BI dashboards tailored to internal and external leadership.</li>
-                        <li>Automated manual data aggregation processes using Microsoft Power Query and Power Automate.</li>
-                        <li>Ensured strict data security compliance while maintaining accuracy and resolving operational data queries.</li>
+                        <li>Transformed raw operational data into high-impact MIS reports, dynamic Power BI dashboards, and live CSAT scoring engines[cite: 1].</li>
+                        <li>Integrated Power Automate workflows to trigger immediate MS Teams alerts for high-priority escalated tickets.</li>
+                        <li>Engineered an Automated Account Health Dashboard with dynamic green/red status indicators covering FCR, SDR, Abandonment, and Backlog metrics.</li>
+                        <li>Created automated 2-hour pending ticket reminders and live Shift Rota dashboards for real-time headcount planning.</li>
                     </ul>
                 </div>
 
                 <div class="timeline-item">
                     <div class="job-title">Senior Technical Process Executive</div>
                     <div class="job-company">Infosys BPM</div>
-                    <div class="job-date">May 2023 – October 2024</div>
+                    <div class="job-date">May 2023 – October 2024[cite: 1]</div>
                     <ul class="job-desc">
-                        <li>Managed enterprise technical service support in a 24/7 environment using ServiceNow.</li>
-                        <li>Resolved complex technical issues relating to Active Directory, VPN, Office 365, and network infrastructure.</li>
+                        <li>Managed enterprise technical service support in a 24/7 environment using ServiceNow[cite: 1].</li>
+                        <li>Resolved technical queries relating to Active Directory, VPN, Office 365, and network infrastructure[cite: 1].</li>
                     </ul>
                 </div>
 
                 <div class="timeline-item">
                     <div class="job-title">HR Assistant & Customer Service Associate</div>
                     <div class="job-company">Amazon Development Centre (India) Private Limited</div>
-                    <div class="job-date">September 2020 – August 2022</div>
+                    <div class="job-date">September 2020 – August 2022[cite: 1]</div>
                     <ul class="job-desc">
-                        <li>Handled end-to-end COVID resource center claims, policy queries, and case tracking within strict SLA benchmarks.</li>
-                        <li>Resolved national and international client issues, maintaining high customer satisfaction metrics.</li>
+                        <li>Handled end-to-end COVID resource center claims, policy queries, and case tracking within strict SLA benchmarks[cite: 1].</li>
+                        <li>Resolved national and international client issues, maintaining high customer satisfaction metrics[cite: 1].</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Section 3: Skills -->
+            <!-- Section 4: Skills -->
             <div class="card view-section" id="section-skills">
                 <div class="visual-header"><i class="fa-solid fa-chart-bar"></i> Skills & Competency Matrix</div>
                 <div class="skill-matrix">
                     <div>
-                        <div class="skill-info"><span>Power Query & PowerPivot</span><span>95%</span></div>
+                        <div class="skill-info"><span>Power BI & Real-time Dashboards</span><span>95%</span></div>
                         <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
                     </div>
                     <div>
-                        <div class="skill-info"><span>MIS Reporting & Dashboards</span><span>90%</span></div>
+                        <div class="skill-info"><span>Power Automate & MS Teams Integration</span><span>92%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="skill-info"><span>Power Query & PowerPivot (DAX)</span><span>90%</span></div>
                         <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
                     </div>
                     <div>
-                        <div class="skill-info"><span>Microsoft Power Automate</span><span>80%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
-                    </div>
-                    <div>
-                        <div class="skill-info"><span>Python & Data Science</span><span>75%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
+                        <div class="skill-info"><span>SLA Management (CSAT, FCR, SDR)</span><span>88%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 88%;"></div></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Section 4: Education -->
+            <!-- Section 5: Education -->
             <div class="card view-section" id="section-education">
                 <div class="visual-header"><i class="fa-solid fa-graduation-cap"></i> Academic Background</div>
                 <div style="line-height: 1.8; font-size: 0.9rem;">
                     <p><b>Bachelor of Business Administration (BBA) - Computer Applications</b></p>
-                    <p style="color: #605e5c;">Savitribai Phule Pune University</p>
+                    <p style="color: #605e5c;">Savitribai Phule Pune University[cite: 1]</p>
                     <hr style="margin: 8px 0; border: none; border-top: 1px solid #eee;">
-                    <p><b>Higher Secondary Certificate (HSC)</b> - Rayat Shikshan Sanstha's S.M. Joshi College</p>
-                    <p><b>Secondary School Certificate (SSC)</b> - Sadhana English Medium School</p>
+                    <p><b>Higher Secondary Certificate (HSC)</b> - Rayat Shikshan Sanstha's S.M. Joshi College[cite: 1]</p>
+                    <p><b>Secondary School Certificate (SSC)</b> - Sadhana English Medium School[cite: 1]</p>
                 </div>
             </div>
 
-            <!-- Section 5: Certifications -->
+            <!-- Section 6: Certifications -->
             <div class="card view-section" id="section-certifications">
                 <div class="visual-header"><i class="fa-solid fa-certificate"></i> Verified Certifications</div>
                 <ul style="font-size: 0.9rem; list-style-type: none; line-height: 2;">
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python for Machine Learning</li>
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python 101 for Data Science</li>
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Technical Foundation Training</li>
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> BPO Milestone 2.0 India JL2</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python for Machine Learning[cite: 1]</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python 101 for Data Science[cite: 1]</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Technical Foundation Training[cite: 1]</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> BPO Milestone 2.0 India JL2[cite: 1]</li>
                 </ul>
             </div>
 
@@ -486,7 +530,6 @@
     <!-- Slicer Filter JavaScript Logic -->
     <script>
         function applySlicerFilter(sectionKey, optionElement) {
-            // Highlight Slicer Item
             if (optionElement) {
                 document.querySelectorAll('.slicer-option').forEach(opt => opt.classList.remove('active-slicer'));
                 optionElement.classList.add('active-slicer');
@@ -494,6 +537,7 @@
             }
 
             const sections = {
+                'projects': document.getElementById('section-projects'),
                 'experience': document.getElementById('section-experience'),
                 'skills': document.getElementById('section-skills'),
                 'education': document.getElementById('section-education'),
@@ -501,12 +545,10 @@
             };
 
             const summarySection = document.getElementById('section-summary');
-            const statusText = document.getElementById('filter-status');
 
             if (sectionKey === 'all') {
                 summarySection.classList.remove('hidden');
                 Object.values(sections).forEach(sec => sec.classList.remove('hidden'));
-                statusText.innerHTML = `<i class="fa-solid fa-filter"></i> Active View Filter: All Sections`;
             } else {
                 summarySection.classList.add('hidden');
                 Object.keys(sections).forEach(key => {
@@ -516,7 +558,6 @@
                         sections[key].classList.add('hidden');
                     }
                 });
-                statusText.innerHTML = `<i class="fa-solid fa-filter"></i> Active View Filter: ${sectionKey.toUpperCase()}`;
             }
         }
     </script>
