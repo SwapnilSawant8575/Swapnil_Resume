@@ -121,10 +121,10 @@
             color: #8a8886;
         }
 
-        /* Dashboard Main Content Layout (Optimized for Desktop & Mobile) */
+        /* Dashboard Main Content Layout */
         .dashboard {
             display: grid;
-            grid-template-columns: 220px minmax(0, 1fr);
+            grid-template-columns: 250px minmax(0, 1fr);
             gap: 15px;
             padding: 15px;
             width: 100%;
@@ -138,8 +138,6 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            position: sticky;
-            top: 15px;
         }
 
         .card {
@@ -156,8 +154,8 @@
         }
 
         .profile-img {
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
             border: 3px solid var(--pbi-accent);
             object-fit: cover;
@@ -261,28 +259,28 @@
             line-height: 1.4;
         }
 
-        /* Skills Badge Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
+        /* Sidebar Skills List */
+        .sidebar-skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        .skill-item {
+        .sidebar-skill-item {
             background: #f8f9fa;
             border: 1px solid #e1dfdd;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
+            padding: 6px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
             gap: 8px;
             color: var(--pbi-text);
         }
 
-        .skill-item i {
+        .sidebar-skill-item i {
             color: var(--pbi-accent);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
 
         /* Technical Skill Block */
@@ -344,11 +342,7 @@
             .dashboard { 
                 grid-template-columns: 1fr; 
             }
-            .sidebar {
-                position: static;
-            }
             .project-grid { grid-template-columns: 1fr; }
-            .skills-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -371,7 +365,7 @@
     <!-- Main Canvas & Sidebar -->
     <div class="dashboard">
         
-        <!-- Sidebar Slicers & Profile -->
+        <!-- Sidebar Slicers, Profile & Core Skills -->
         <div class="sidebar">
             
             <!-- Profile Photo & Detail Tile -->
@@ -411,6 +405,31 @@
                 </label>
             </div>
 
+            <!-- Core Skills Block placed in Left Sidebar below Slicer -->
+            <div class="card view-section" id="section-skills">
+                <div class="slicer-title">
+                    <span>Core Skills</span>
+                    <i class="fa-solid fa-list-check" style="font-size: 0.75rem;"></i>
+                </div>
+                <div class="sidebar-skills-list">
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> MIS Reporting & Analysis</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Advanced Microsoft Excel</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Excel Formulas & Functions</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Pivot Tables & Charts</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Macros / VBA</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Power Query</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> ServiceNow Data Analysis</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Data Cleaning & Validation</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Data Consolidation</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Daily/Weekly/Monthly Reports</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> KPI & Performance Reporting</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Ad-hoc Reports & Analysis</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Data Visualization</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Report Automation</div>
+                    <div class="sidebar-skill-item"><i class="fa-solid fa-check"></i> Management Reporting</div>
+                </div>
+            </div>
+
         </div>
 
         <!-- Main Dashboard View Panel -->
@@ -420,7 +439,7 @@
             <div class="card view-section" id="section-summary">
                 <div class="visual-header"><i class="fa-solid fa-user-gear"></i> Executive Profile Overview</div>
                 <p style="font-size: 0.88rem; line-height: 1.5; color: #444;">
-                    Data-driven <b>Management Information System (MIS) Executive</b> with a Bachelor of Business Administration in Computer Applications from Savitribai Phule Pune University[cite: 1]. Specialized in architecting real-time Power BI dashboards, event-driven MS Teams alert systems, and Power Automate workflows that convert complex data into immediate operational insights[cite: 1].
+                    Data-driven <b>Management Information System (MIS) Executive</b> with a Bachelor of Business Administration in Computer Applications from Savitribai Phule Pune University. Specialized in architecting real-time Power BI dashboards, event-driven MS Teams alert systems, and Power Automate workflows that convert complex data into immediate operational insights.
                 </p>
             </div>
 
@@ -491,71 +510,49 @@
                 <div class="timeline-item">
                     <div class="job-title">Management Information System (MIS) Executive</div>
                     <div class="job-company">Wipro</div>
-                    <div class="job-date">October 2024 – Present | Pune, India[cite: 1]</div>
+                    <div class="job-date">October 2024 – Present | Pune, India</div>
                     <ul class="job-desc">
-                        <li>Prepare and circulate Daily, Weekly, and Monthly MIS reports within defined deadlines[cite: 1].</li>
-                        <li>Collect, consolidate, validate, and analyze data from multiple sources to ensure complete accuracy and consistency[cite: 1].</li>
-                        <li>Develop and maintain Excel-based MIS reports, trackers, dashboards, and analytical reports[cite: 1].</li>
-                        <li>Utilize advanced Excel functions, Pivot Tables, Power Query, and VBA/Macros to automate and streamline reporting processes[cite: 1].</li>
-                        <li>Create and maintain Power BI dashboards to provide management with clear visibility into business performance and key KPIs[cite: 1].</li>
-                        <li>Perform data cleaning, transformation, merging, and validation using Power Query[cite: 1].</li>
-                        <li>Analyze trends, variances, and performance indicators, highlighting important observations to management[cite: 1].</li>
-                        <li>Maintain regular reporting databases and ensure timely updating of MIS trackers[cite: 1].</li>
-                        <li>Coordinate across teams to collect required data and resolve discrepancies promptly[cite: 1].</li>
-                        <li>Prepare ad-hoc reports and custom analysis requested by Team Leaders, Assistant Managers, or management[cite: 1].</li>
-                        <li>Identify continuous opportunities to improve reporting accuracy, operational efficiency, and automation[cite: 1].</li>
-                        <li>Ensure all assigned reports are delivered accurately, securely, and within required timelines[cite: 1].</li>
+                        <li>Prepare and circulate Daily, Weekly, and Monthly MIS reports within defined deadlines.</li>
+                        <li>Collect, consolidate, validate, and analyze data from multiple sources to ensure complete accuracy and consistency.</li>
+                        <li>Develop and maintain Excel-based MIS reports, trackers, dashboards, and analytical reports.</li>
+                        <li>Utilize advanced Excel functions, Pivot Tables, Power Query, and VBA/Macros to automate and streamline reporting processes.</li>
+                        <li>Create and maintain Power BI dashboards to provide management with clear visibility into business performance and key KPIs.</li>
+                        <li>Perform data cleaning, transformation, merging, and validation using Power Query.</li>
+                        <li>Analyze trends, variances, and performance indicators, highlighting important observations to management.</li>
+                        <li>Maintain regular reporting databases and ensure timely updating of MIS trackers.</li>
+                        <li>Coordinate across teams to collect required data and resolve discrepancies promptly.</li>
+                        <li>Prepare ad-hoc reports and custom analysis requested by Team Leaders, Assistant Managers, or management.</li>
+                        <li>Identify continuous opportunities to improve reporting accuracy, operational efficiency, and automation.</li>
+                        <li>Ensure all assigned reports are delivered accurately, securely, and within required timelines.</li>
                     </ul>
                 </div>
 
                 <div class="timeline-item">
                     <div class="job-title">Senior Technical Process Executive</div>
                     <div class="job-company">Infosys BPM</div>
-                    <div class="job-date">May 2023 – October 2024[cite: 1]</div>
+                    <div class="job-date">May 2023 – October 2024</div>
                     <ul class="job-desc">
-                        <li>Managed daily shrinkage analysis, customer satisfaction survey reporting, backlog analysis, and KPI tracking to drive continuous improvement initiatives and ensure optimal operational efficiency[cite: 1].</li>
-                        <li>Managing and organizing data within the organization, ensuring accuracy, security, and accessibility. Developing and implement data management policies and procedures[cite: 1].</li>
-                        <li>I have used my modern abilities in MS PowerPoint to come up with custom-made MIS decks and presentations that can easily convey complicated details to stakeholders and therefore aid decision making[cite: 1].</li>
-                        <li>Timely checks were done on MIS system and its processes in order to maintain accurate data, integrity and preservation of regulatory compliance standards[cite: 1].</li>
+                        <li>Managed daily shrinkage analysis, customer satisfaction survey reporting, backlog analysis, and KPI tracking to drive continuous improvement initiatives and ensure optimal operational efficiency.</li>
+                        <li>Managing and organizing data within the organization, ensuring accuracy, security, and accessibility. Developing and implement data management policies and procedures.</li>
+                        <li>I have used my modern abilities in MS PowerPoint to come up with custom-made MIS decks and presentations that can easily convey complicated details to stakeholders and therefore aid decision making.</li>
+                        <li>Timely checks were done on MIS system and its processes in order to maintain accurate data, integrity and preservation of regulatory compliance standards.</li>
                     </ul>
                 </div>
 
                 <div class="timeline-item">
                     <div class="job-title">HR Assistant & Customer Service Associate</div>
                     <div class="job-company">Amazon Development Centre (India) Private Limited</div>
-                    <div class="job-date">September 2020 – August 2022[cite: 1]</div>
+                    <div class="job-date">September 2020 – August 2022</div>
                     <ul class="job-desc">
-                        <li>Handled end-to-end COVID resource center claims, policy queries, and case tracking within strict SLA benchmarks[cite: 1].</li>
-                        <li>Taken ownership of employee contacts via calls and emails ensuring that each contact is accepted and resolved with a high degree of customer focus[cite: 1].</li>
-                        <li>Assess new and existing claims and make accurate classifications about the type of absence required[cite: 1].</li>
-                        <li>Contacted employees as needed and keep them updated on the status of their claim[cite: 1].</li>
-                        <li>I had also ensured all my tasks and decisions are rendered within SLA[cite: 1].</li>
-                        <li>Handled a high volume of National and International customer calls and chat, averaging 30-50 calls/chats per day with a first call resolution rate of 85 - 90%[cite: 1].</li>
-                        <li>Listened actively to customer problems, feedback and provided resolution, constructive suggestions to improve products and services[cite: 1].</li>
-                        <li>Worked with vibrant teams and provide superb customer care services[cite: 1].</li>
+                        <li>Handled end-to-end COVID resource center claims, policy queries, and case tracking within strict SLA benchmarks.</li>
+                        <li>Taken ownership of employee contacts via calls and emails ensuring that each contact is accepted and resolved with a high degree of customer focus.</li>
+                        <li>Assess new and existing claims and make accurate classifications about the type of absence required.</li>
+                        <li>Contacted employees as needed and keep them updated on the status of their claim.</li>
+                        <li>I had also ensured all my tasks and decisions are rendered within SLA.</li>
+                        <li>Handled a high volume of National and International customer calls and chat, averaging 30-50 calls/chats per day with a first call resolution rate of 85 - 90%.</li>
+                        <li>Listened actively to customer problems, feedback and provided resolution, constructive suggestions to improve products and services.</li>
+                        <li>Worked with vibrant teams and provide superb customer care services.</li>
                     </ul>
-                </div>
-            </div>
-
-            <!-- Section 4: Core Skills -->
-            <div class="card view-section" id="section-skills">
-                <div class="visual-header"><i class="fa-solid fa-list-check"></i> Core Skills</div>
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> MIS Reporting & Data Analysis</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Advanced Microsoft Excel</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Excel Formulas & Functions</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Pivot Tables & Pivot Charts</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Macros / VBA</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Power Query</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> ServiceNow Data Analysis</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Data Cleaning & Validation</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Data Consolidation & Reconciliation</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Daily / Weekly / Monthly Reporting</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> KPI & Performance Reporting</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Ad-hoc Reports & Analysis</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Data Visualization</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Report Automation</div>
-                    <div class="skill-item"><i class="fa-solid fa-check"></i> Management Reporting</div>
                 </div>
             </div>
 
@@ -604,10 +601,10 @@
                 <div class="visual-header"><i class="fa-solid fa-graduation-cap"></i> Academic Background</div>
                 <div style="line-height: 1.8; font-size: 0.9rem;">
                     <p><b>Bachelor of Business Administration (BBA) - Computer Applications</b></p>
-                    <p style="color: #605e5c;">Savitribai Phule Pune University[cite: 1]</p>
+                    <p style="color: #605e5c;">Savitribai Phule Pune University</p>
                     <hr style="margin: 8px 0; border: none; border-top: 1px solid #eee;">
-                    <p><b>Higher Secondary Certificate (HSC)</b> - Rayat Shikshan Sanstha's S.M. Joshi College[cite: 1]</p>
-                    <p><b>Secondary School Certificate (SSC)</b> - Sadhana English Medium School[cite: 1]</p>
+                    <p><b>Higher Secondary Certificate (HSC)</b> - Rayat Shikshan Sanstha's S.M. Joshi College</p>
+                    <p><b>Secondary School Certificate (SSC)</b> - Sadhana English Medium School</p>
                 </div>
             </div>
 
@@ -615,10 +612,10 @@
             <div class="card view-section" id="section-certifications">
                 <div class="visual-header"><i class="fa-solid fa-certificate"></i> Verified Certifications</div>
                 <ul style="font-size: 0.9rem; list-style-type: none; line-height: 2;">
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python for Machine Learning[cite: 1]</li>
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python 101 for Data Science[cite: 1]</li>
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Technical Foundation Training[cite: 1]</li>
-                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> BPO Milestone 2.0 India JL2[cite: 1]</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python for Machine Learning</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Python 101 for Data Science</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> Technical Foundation Training</li>
+                    <li><i class="fa-solid fa-check-double" style="color: green;"></i> BPO Milestone 2.0 India JL2</li>
                 </ul>
             </div>
 
